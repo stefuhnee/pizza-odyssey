@@ -5,10 +5,7 @@ var maxPizzas;
 var minDeliveries;
 var maxDeliveries;
 var pizzasSold;
-var specificHour;
-var specificPizzas;
-var specificDeliveries;
-var specificDriversperHour = [];
+var DriversperHour = [];
 var el;
 
 var eightAM = {
@@ -132,13 +129,13 @@ function deliveriesPerHour(minDeliveries, maxDeliveries) {
 };
 
 //References the salesData array, takes a time object and reads the value of the pizzasSold property, then pushes that value to the array PizzasSoldPerHour.
-function salesDataPerDay() {
+function PizzaDataPerDay() {
   for (var i = 0; i < salesData.length; i++) {
     pizzasSoldPerHour.push(salesData[i].pizzasSold);
   }
   return pizzasSoldPerHour;
 }
-console.log(salesDataPerDay());
+console.log(PizzaDataPerDay());
 
 //References the salesData array, takes a time object and reads the value of the deliveriesMade property, then pushes that value to the array deliveriesMadePerHour.
 function deliveriesDataPerDay() {
@@ -152,21 +149,21 @@ console.log(deliveriesDataPerDay());
 //Calculates the drivers needed for every hour of the day.
 function driversPerDay() {
   for (var i = 0; i < salesData.length; i++) {
-    specificDriversperHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
+    DriversperHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
   }
-  return specificDriversperHour;
+  return DriversperHour;
 };
 console.log(driversPerDay());
 
 //Creates SpecificLocation object
 function SpecificLocation(name) {
   this.name = name;
-  this.pizzasSoldPerHour = salesDataPerDay();
+  this.hoursOfOperation = salesData;
+  this.pizzasSoldPerHour = PizzaDataPerDay();
   this.deliveriesMadePerHour = deliveriesDataPerDay();
   this.specificDrivers = driversPerDay();
 };
 
-//Displays the required information in the format given.
 var ballard = new SpecificLocation('ballard');
 var first_hill = new SpecificLocation('first-hill');
 var international_district = new SpecificLocation('international-district');
@@ -174,11 +171,21 @@ var south_lake_union = new SpecificLocation('south-lake-union');
 var georgetown = new SpecificLocation('georgetown');
 var ravenna = new SpecificLocation('ravenna');
 
-function writeToDocument() {
+//Displays the required information in the format given.
+function writeToDocument(name) {
   for (var i = 0; i < salesData.length; i++) {
-    el = document.getElementById(name + '-' + salesData[i].name);
-    el.textContent = salesData[i].name + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + specificDriversperHour[i] + ']';
+    el = document.getElementById(name);
+    newLi = document.createElement('li');
+    newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversperHour[i] + ']';
+    el.appendChild(newLi);
   }
 }
+
+writeToDocument('ballard');
+writeToDocument('first-hill');
+writeToDocument('international-district');
+writeToDocument('south-lake-union');
+writeToDocument('georgetown');
+writeToDocument('ravenna');
 
 // ADD LIST ITEMS VIA CREATELEMENT, THEN APPEND CHILD AT THE END OF LOOP... PER LOCATION
