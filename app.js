@@ -173,3 +173,10 @@ var international_district = new SpecificLocation('international-district');
 var south_lake_union = new SpecificLocation('south-lake-union');
 var georgetown = new SpecificLocation('georgetown');
 var ravenna = new SpecificLocation('ravenna');
+
+function writeToDocument() {
+  for (var i = 0; i < salesData.length; i++) {
+    el = document.getElementById(name + '-' + salesData[i].name);
+    el.textContent = salesData[i].name + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + specificDriversperHour[i] + ']';
+  }
+}
