@@ -156,13 +156,14 @@ function driversPerDay() {
 console.log(driversPerDay());
 
 //Creates SpecificLocation object
+// NEEEEEEEED TO ADD METHODS VIA PROTOTYPE METHOD
 function SpecificLocation(name) {
   this.name = name;
-  this.hoursOfOperation = salesData;
-  this.pizzasSoldPerHour = PizzaDataPerDay();
-  this.deliveriesMadePerHour = deliveriesDataPerDay();
-  this.specificDrivers = driversPerDay();
 };
+
+SpecificLocation.prototype.pizzasSoldPerHour = PizzaDataPerDay();
+SpecificLocation.prototype.deliveriesMadePerHour = deliveriesDataPerDay();
+SpecificLocation.prototype.specificDrivers = driversPerDay();
 
 var ballard = new SpecificLocation('ballard');
 var first_hill = new SpecificLocation('first-hill');
@@ -194,5 +195,3 @@ writeToDocument('international-district');
 writeToDocument('south-lake-union');
 writeToDocument('georgetown');
 writeToDocument('ravenna');
-
-// ADD LIST ITEMS VIA CREATELEMENT, THEN APPEND CHILD AT THE END OF LOOP... PER LOCATION
