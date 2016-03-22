@@ -5,6 +5,10 @@ var maxPizzas;
 var minDeliveries;
 var maxDeliveries;
 var pizzasSold;
+var specificHour;
+var specificPizzas;
+var specificDrivers;
+var el;
 
 var eightAM = {
   time: '8:00am',
@@ -144,5 +148,15 @@ function deliveriesDataPerDay() {
 }
 console.log(deliveriesDataPerDay());
 
-//
+//Displays the required information in the format given.
 function writeDataForLocation() {
+  for (var i = 0; i < salesData.length; i++) {
+    specificHour = salesData[i].time;
+    specificPizzas = pizzasSoldPerHour[i];
+    specificDrivers =
+    deliveriesMadePerHour[i];
+    var el = document.getElementById(specificHour);
+    el.textContent = specificHour + specificPizzas + ' pizzas, ' + specificDrivers + ' deliveries';
+  }
+}
+writeDataForLocation();
