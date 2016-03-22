@@ -8,9 +8,8 @@ var pizzasSold;
 var specificHour;
 var specificPizzas;
 var specificDeliveries;
-var specificDrivers;
+var specificDriversperHour = [];
 var el;
-var locationsArray = ['ballard', 'first-hill', 'international-district', 'south-lake-union', 'georgetown', 'ravenna'];
 
 var eightAM = {
   time: '8:00am',
@@ -150,22 +149,27 @@ function deliveriesDataPerDay() {
 }
 console.log(deliveriesDataPerDay());
 
-//Displays the required information in the format given.
-function writeDataForLocation() {
+//Calculates the drivers needed for every hour of the day.
+function driversPerDay() {
   for (var i = 0; i < salesData.length; i++) {
-    specificHour = salesData[i].time;
-    specificPizzas = pizzasSoldPerHour[i];
-    specificDeliveries =
-    deliveriesMadePerHour[i];
-    specificDrivers = Math.round(Math.ceiling(specificDeliveries / 3));
-
-    var el = document.getElementById(specificHour);
-    el.textContent = specificHour + ' ' + specificPizzas + ' pizzas, ' + specificDeliveries + ' deliveries -- [ ' + 'drivers recommended: ' + specificDrivers + ']';
+    specificDriversperHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
   }
-}
+  return specificDriversperHour;
+};
+console.log(driversPerDay());
 
-function switchLocationsforDataWriting() {
-  for (var i = 0; i < locationsArray.length; i++) {
-    writeDataForLocation();
-  }
-}
+//Creates SpecificLocation object
+function SpecificLocation(name) {
+  this.name = name;
+  this.pizzasSoldPerHour = salesDataPerDay();
+  this.deliveriesMadePerHour = deliveriesDataPerDay();
+  this.specificDrivers = driversPerDay();
+};
+
+//Displays the required information in the format given.
+var ballard = new SpecificLocation('ballard');
+var first_hill = new SpecificLocation('first-hill');
+var international_district = new SpecificLocation('international-district');
+var south_lake_union = new SpecificLocation('south-lake-union');
+var georgetown = new SpecificLocation('georgetown');
+var ravenna = new SpecificLocation('ravenna');
