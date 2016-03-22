@@ -176,8 +176,15 @@ function writeToDocument(name) {
   for (var i = 0; i < salesData.length; i++) {
     el = document.getElementById(name);
     newLi = document.createElement('li');
-    newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversperHour[i] + ']';
-    el.appendChild(newLi);
+
+    if (DriversperHour === 0) {
+      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ No drivers recommended ]';
+      el.appendChild(newLi);
+    } else {
+      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversperHour[i] + ']';
+      el.appendChild(newLi);
+    }
+
   }
 }
 
