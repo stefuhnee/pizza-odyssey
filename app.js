@@ -7,8 +7,10 @@ var maxDeliveries;
 var pizzasSold;
 var specificHour;
 var specificPizzas;
+var specificDeliveries;
 var specificDrivers;
 var el;
+var locationsArray = ['ballard', 'first-hill', 'international-district', 'south-lake-union', 'georgetown', 'ravenna'];
 
 var eightAM = {
   time: '8:00am',
@@ -153,10 +155,17 @@ function writeDataForLocation() {
   for (var i = 0; i < salesData.length; i++) {
     specificHour = salesData[i].time;
     specificPizzas = pizzasSoldPerHour[i];
-    specificDrivers =
+    specificDeliveries =
     deliveriesMadePerHour[i];
+    specificDrivers = Math.round(Math.ceiling(specificDeliveries / 3));
+
     var el = document.getElementById(specificHour);
-    el.textContent = specificHour + specificPizzas + ' pizzas, ' + specificDrivers + ' deliveries';
+    el.textContent = specificHour + ' ' + specificPizzas + ' pizzas, ' + specificDeliveries + ' deliveries -- [ ' + 'drivers recommended: ' + specificDrivers + ']';
   }
 }
-writeDataForLocation();
+
+function switchLocationsforDataWriting() {
+  for (var i = 0; i < locationsArray.length; i++) {
+    writeDataForLocation();
+  }
+}
