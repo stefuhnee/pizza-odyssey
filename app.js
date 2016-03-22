@@ -180,3 +180,5 @@ function writeToDocument() {
     el.textContent = salesData[i].name + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + specificDriversperHour[i] + ']';
   }
 }
+
+// ADD LIST ITEMS VIA CREATELEMENT, THEN APPEND CHILD AT THE END OF LOOP... PER LOCATION
