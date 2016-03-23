@@ -160,8 +160,6 @@ function getOneAM() {
   return oneAM;
 };
 
-var salesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-
 //Generates a random number of pizzas delivered in a given hour given a range of min to max.
 function pizzasPerHour(minPizzas, maxPizzas) {
   return Math.floor(Math.random() * (maxPizzas - minPizzas) + minPizzas);
@@ -173,83 +171,73 @@ function deliveriesPerHour(minDeliveries, maxDeliveries) {
 };
 
 //Creates SpecificLocation object
-function SpecificLocation(name) {
+function SpecificLocation(name, salesData) {
   this.name = name;
-  pizzasArray = [];
-  deliveriesArray = [];
-  driversArray = [];
+  this.salesData = salesData;
 };
-
-// Defining each location as a new object
-var ballard = new SpecificLocation('ballard');
-var first_hill = new SpecificLocation('first-hill');
-var international_district = new SpecificLocation('international-district');
-var south_lake_union = new SpecificLocation('south-lake-union');
-var georgetown = new SpecificLocation('georgetown');
-var ravenna = new SpecificLocation('ravenna');
 
 // Adding methods to object constructor to obtain arrays
 
-// References the salesData array, takes a time object and reads the value of the pizzasSold property, then pushes that value to the array PizzasSoldPerHour.
-SpecificLocation.prototype.pizzasSoldPerHour = function() {
-  for (var i = 0; i < salesData.length; i++) {
-    pizzasArray.push(salesData[i].pizzasSold);
-  }
-  return pizzasArray;
-};
-console.log(ballard.pizzasSoldPerHour());
-console.log(first_hill.pizzasSoldPerHour());
-
-//References the salesData array, takes a time object and reads the value of the deliveriesMade property, then pushes that value to the array deliveriesMadePerHour.
-SpecificLocation.prototype.deliveriesMadePerHour = function() {
-  for (i = 0; i < salesData.length; i++) {
-    deliveriesArray.push(salesData[i].deliveriesMade);
-  }
-  return deliveriesArray;
-};
-console.log(ballard.deliveriesMadePerHour());
-
 //Calculates the drivers needed for every hour of the day.
 SpecificLocation.prototype.specificDrivers = function() {
-  for (var i = 0; i < salesData.length; i++) {
-    driversArray.push(Math.round(Math.ceil(deliveriesArray[i] / 3)));
+  for (var i = 0; i < this.salesData.length; i++) {
+    this.salesData[i].driversNeeded = [];
+    //
+    this.salesData[i].driversNeeded = Math.ceil(this.salesData[i].deliveriesMade / 3);
+    console.log('sales Data of ' + i + ' ', this.salesData[i]);
   }
-  return driversArray;
 };
-console.log(ballard.specificDrivers());
 
 //Displays the required information in the format given.
 SpecificLocation.prototype.writeToDocument = function() {
-  pizzasArray = this.pizzasSoldPerHour();
-  deliveriesArray = this.deliveriesMadePerHour();
-  driversArray = this.specificDrivers();
   // Cycle through each hour object in the array
-  for (var i = 0; i < salesData.length; i++) {
+  for (var i = 0; i < this.salesData.length; i++) {
     // Target HTML ul element by name ID, which matches the name parameter and create new li
-    el = document.getElementById(this.name);
-    newLi = document.createElement('li');
+    var el = document.getElementById(this.name);
+    console.log('element referred to: ' + el);
+    var newLi = document.createElement('li');
     // If there are the value at index i for drivers needed is 0, write No drivers recommended.
-    if (driversArray[i] === 0) {
-      newLi.textContent = salesData[i].time + ' ' + pizzasArray[i] + ' pizzas, ' + deliveriesArray[i] + ' deliveries -- [ No drivers recommended ]';
+    if (this.salesData[i].driversNeeded === 0) {
+      newLi.textContent = this.salesData[i].time + ' ' + this.salesData[i].pizzasSold + ' pizzas, ' + this.salesData[i].deliveriesMade + ' deliveries -- [ No drivers recommended ]';
       el.appendChild(newLi);
       // Otherwise, write how many drivers are recommended.
     } else {
-      newLi.textContent = salesData[i].time + ' ' + pizzasArray[i] + ' pizzas, ' + deliveriesArray[i] + ' deliveries -- [ ' + 'drivers recommended: ' + driversArray[i] + ']';
+      newLi.textContent = this.salesData[i].time + ' ' + this.salesData[i].pizzasSold + ' pizzas, ' + this.salesData[i].deliveriesMade + ' deliveries -- [ ' + 'drivers recommended: ' + this.salesData[i].driversNeeded + ']';
       el.appendChild(newLi);
     }
-
-  }
+  };
 };
+
+var ballardSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var firstHillSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var internationalDistrictSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var southLakeUnionSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var georgetownSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var ravennaSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+// Defining each location as a new object
+var ballard = new SpecificLocation('ballard', ballardSalesData);
+var firstHill = new SpecificLocation('first-hill', firstHillSalesData);
+var internationalDistrict = new SpecificLocation('international-district', internationalDistrictSalesData);
+var southLakeUnion = new SpecificLocation('south-lake-union', southLakeUnionSalesData);
+var georgetown = new SpecificLocation('georgetown', georgetownSalesData);
+var ravenna = new SpecificLocation('ravenna', ravennaSalesData);
+
+ballard.specificDrivers();
+firstHill.specificDrivers();
+internationalDistrict.specificDrivers();
+southLakeUnion.specificDrivers();
+georgetown.specificDrivers();
+ravenna.specificDrivers();
 
 ballard.writeToDocument();
-first_hill.writeToDocument();
-international_district.writeToDocument();
-south_lake_union.writeToDocument();
+firstHill.writeToDocument();
+internationalDistrict.writeToDocument();
+southLakeUnion.writeToDocument();
 georgetown.writeToDocument();
 ravenna.writeToDocument();
-
-function pizzasServedText() {
-  var el = document.getElementById('pizzas-served');
-  el.textContent = 'dfs';
-};
-pizzasServedText();
