@@ -18,32 +18,48 @@ storeLocation.prototype.pushHourlyData = function(data) {
 storeLocation.prototype.getRow = function() {
   for (var i = 0; i < this.hourlyData.length; i++) {
     currentRowArray = [];
-    var time = this.hourlyData[i].time;
-    var pizzasSold = this.hourlyData[i].pizzasSold;
-    var deliveriesMade = this.hourlyData[i].deliveriesMade;
-    var driversNeeded = this.hourlyData[i].driversNeeded;
-    currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
-    // Creates a data row for the table
-    function generateRow(currentRowArray) {
-      var row = document.createElement('tr');
-      var col;
-      for (var i = 0; i < rowArray.length; i++) {
-        col = document.createElement('td');
-        col.textContent = rowArray[i];
-        row.appendChild(col);
-      }
-      locationTable.appendChild(row);
+    while (currentRowArray.length < 4) {
+      var time = this.hourlyData[i].time;
+      var pizzasSold = this.hourlyData[i].pizzasSold;
+      var deliveriesMade = this.hourlyData[i].deliveriesMade;
+      var driversNeeded = this.hourlyData[i].driversNeeded;
+      currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
     }
+    locationTable.appendChild(generateRow(currentRowArray));
     console.log(currentRowArray);
-  };
+  }
 };
 
-// Creates new object HourlyData with 4 properties. Eventually becomes a property of the storeLocation.
+// Creates new object HourlyData with 4 properties. Eventually becomes a property of the storeLocation object.
 function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDeliveriesMade) {
   this.time = time;
   this.pizzasSold = getRandomNumber(minPizzasSold, maxPizzasSold);
   this.deliveriesMade = getRandomNumber(minDeliveriesMade, maxDeliveriesMade);
   this.driversNeeded = Math.ceil(this.deliveriesMade / 3);
+};
+
+// Creates a heading row for the table
+function generateHeadingRow(tableHeadings) {
+  var row = document.createElement('tr');
+  var col;
+  for (var i = 0; i < tableHeadings.length; i++) {
+    col = document.createElement('th');
+    col.textContent = tableHeadings[i];
+    row.appendChild(col);
+  }
+  locationTable.appendChild(row);
+};
+
+// Creates a data row for the table
+function generateRow(currentRowArray) {
+  var row = document.createElement('tr');
+  var col;
+  for (var i = 0; i < currentRowArray.length; i++) {
+    col = document.createElement('td');
+    col.textContent = currentRowArray[i];
+    row.appendChild(col);
+  }
+  return row;
 };
 
 // Creating new objects
@@ -74,17 +90,6 @@ ballard.pushHourlyData(new HourlyData('11:00 pm', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('12:00 am', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('1:00 am', 8, 15, 6, 16));
 console.log(ballard.hourlyData);
-// Creates a heading row for the table
-function generateHeadingRow(tableHeadings) {
-  var row = document.createElement('tr');
-  var col;
-  for (var i = 0; i < tableHeadings.length; i++) {
-    col = document.createElement('th');
-    col.textContent = tableHeadings[i];
-    row.appendChild(col);
-  }
-  return row;
-};
 
 // Creates the table and calls functions to generate the heading and each data row, sequentially.
 var locationTable = document.createElement('table');
@@ -93,6 +98,5 @@ var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Dr
 // Adds table to the page using the HTML id element.
 document.getElementById('ballard').appendChild(locationTable);
 
+console.log(ballard.hourlyData[0].time);
 ballard.getRow();
-
-generateHeadingRow(tableHeadings);
