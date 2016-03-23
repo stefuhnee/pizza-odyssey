@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Amatic+SC:700|Waiting+for+the+Sunrise);
 
+header {
+  height: 500px;
+}
+
 #pizza-cat {
   height: 283px;
   width: 300px;
@@ -7,14 +11,28 @@
   margin-left: auto;
 }
 
-#title-container {
-  position: relative;
-  top: -230px;
-}
-
 #title {
   font-size: 100px;
   font-family: 'Waiting for the Sunrise';
   text-align: center;
-  color: #f11fff;
+  position: relative;
+  top: -200px;
+  color: #f25749;
+  z-index: 1;
+}
+
+#slogan {
+  font-size: 40px;
+  font-family: 'Waiting for the Sunrise';
+  text-align: center;
+  position: relative;
+  top: -335px;
+  color: #ffa563;
+  background-color: #01a29a;
+  border: 1px solid black;
+}
+
+#hours {
+  position: relative;
+  top: -130px;
 }
