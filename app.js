@@ -1,8 +1,30 @@
+function generateHeadingRow(tableHeadings) {
+  var row = document.createElement('tr');
+  var col;
+  for (var i = 0; i < tableHeadings.length; i++) {
+    col = document.createElement('th');
+    col.textContent = tableHeadings[i];
+    row.appendChild(col);
+  }
+  return row;
+}
+
+function generateRow(rowArray) {
+  var row = document.createElement('tr');
+  var col;
+  for (var i = 0; i < rowArray.length; i++) {
+    col = document.createElement('td');
+    col.textContent = rowArray[i];
+    row.appendChild(col);
+  }
+  return row;
+}
+
 function getEightAM() {
   var eightAM = {
     time: '8:00am',
-    pizzasSold: pizzasPerHour(0,4),
-    deliveriesMade: deliveriesPerHour(0,4)
+    pizzasSold: pizzasPerHour(this.minPizzas,this.maxPizzas),
+    deliveriesMade: deliveriesPerHour(this.minPizzas,this.maxPizzas)
   };
   return eightAM;
 };
@@ -171,12 +193,14 @@ function deliveriesPerHour(minDeliveries, maxDeliveries) {
 };
 
 //Creates SpecificLocation object
-function SpecificLocation(name, salesData) {
+function SpecificLocation(name, salesData, minPizzas, maxPizzas) {
   this.name = name;
   this.salesData = salesData;
+  this.minPizzas = minPizzas;
+  this.maxPizzas = maxPizzas;
 };
 
-// Adding methods to object constructor to obtain arrays
+// Adding methods to object constructor
 
 //Calculates the drivers needed for every hour of the day.
 SpecificLocation.prototype.specificDrivers = function() {
@@ -208,7 +232,14 @@ SpecificLocation.prototype.writeToDocument = function() {
   };
 };
 
+var tableHeadings = ['Time', 'Min Pizza/hr', 'Max Pizza/hr', 'Min Delivery/hr', 'Max Delivery/hr'];
+
+var rowOne = ['', '', '', '', ''];
+
 var ballardSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
+
+var ballardMinPizzas = [0, 0, 0, 5, 5, 5, 2, 2, 2, 0, 0, 0, 1, 1, 1, 8, 8, 8];
+var ballardMaxPizzas = [3, 3, 3, 10, 10, 10, 13, 13, 13, 15, 15, 15, 3, 3, 3, 15, 15, 15];
 
 var firstHillSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
 
@@ -220,10 +251,8 @@ var georgetownSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(),
 
 var ravennaSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
 
-
-
 // Defining each location as a new object
-var ballard = new SpecificLocation('ballard', ballardSalesData);
+var ballard = new SpecificLocation('ballard', ballardSalesData, ballardMinPizzas, ballardMaxPizzas);
 var firstHill = new SpecificLocation('first-hill', firstHillSalesData);
 var internationalDistrict = new SpecificLocation('international-district', internationalDistrictSalesData);
 var southLakeUnion = new SpecificLocation('south-lake-union', southLakeUnionSalesData);
@@ -237,11 +266,11 @@ southLakeUnion.specificDrivers();
 georgetown.specificDrivers();
 ravenna.specificDrivers();
 
-
-
 ballard.writeToDocument();
 firstHill.writeToDocument();
 internationalDistrict.writeToDocument();
 southLakeUnion.writeToDocument();
 georgetown.writeToDocument();
 ravenna.writeToDocument();
+
+generateHeadingRow(tableHeadings);
