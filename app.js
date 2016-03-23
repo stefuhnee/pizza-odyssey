@@ -5,7 +5,7 @@ var maxPizzas;
 var minDeliveries;
 var maxDeliveries;
 var pizzasSold;
-var DriversperHour = [];
+var DriversPerHour = [];
 var el;
 
 var eightAM = {
@@ -149,18 +149,18 @@ console.log(deliveriesDataPerDay());
 //Calculates the drivers needed for every hour of the day.
 function driversPerDay() {
   for (var i = 0; i < salesData.length; i++) {
-    DriversperHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
+    DriversPerHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
   }
-  return DriversperHour;
+  return DriversPerHour;
 };
 console.log(driversPerDay());
 
 //Creates SpecificLocation object
-// NEEEEEEEED TO ADD METHODS VIA PROTOTYPE METHOD
 function SpecificLocation(name) {
   this.name = name;
 };
 
+//Adding methods to object constructor to obtain arrays
 SpecificLocation.prototype.pizzasSoldPerHour = PizzaDataPerDay();
 SpecificLocation.prototype.deliveriesMadePerHour = deliveriesDataPerDay();
 SpecificLocation.prototype.specificDrivers = driversPerDay();
@@ -174,15 +174,18 @@ var ravenna = new SpecificLocation('ravenna');
 
 //Displays the required information in the format given.
 function writeToDocument(name) {
+  // Cycle through each hour object in the array
   for (var i = 0; i < salesData.length; i++) {
+    // Target HTML ul element by name ID, which matches the name parameter and create new li
     el = document.getElementById(name);
     newLi = document.createElement('li');
-
-    if (DriversperHour === 0) {
+    // If there are the value at index i for drivers needed is 0, write No drivers recommended.
+    if (DriversPerHour[i] === 0) {
       newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ No drivers recommended ]';
       el.appendChild(newLi);
+      // Otherwise, write how many drivers are recommended.
     } else {
-      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversperHour[i] + ']';
+      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversPerHour[i] + ']';
       el.appendChild(newLi);
     }
 
