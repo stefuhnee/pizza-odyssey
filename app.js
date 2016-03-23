@@ -121,6 +121,9 @@ function deliveriesPerHour(minDeliveries, maxDeliveries) {
 //Creates SpecificLocation object
 function SpecificLocation(name) {
   this.name = name;
+  pizzasArray = [];
+  deliveriesArray = [];
+  driversArray = [];
 };
 
 // Defining each location as a new object
@@ -135,7 +138,6 @@ var ravenna = new SpecificLocation('ravenna');
 
 // References the salesData array, takes a time object and reads the value of the pizzasSold property, then pushes that value to the array PizzasSoldPerHour.
 SpecificLocation.prototype.pizzasSoldPerHour = function() {
-  pizzasArray = [];
   for (var i = 0; i < salesData.length; i++) {
     pizzasArray.push(salesData[i].pizzasSold);
   }
@@ -146,7 +148,6 @@ console.log(first_hill.pizzasSoldPerHour());
 
 //References the salesData array, takes a time object and reads the value of the deliveriesMade property, then pushes that value to the array deliveriesMadePerHour.
 SpecificLocation.prototype.deliveriesMadePerHour = function() {
-  deliveriesArray = [];
   for (i = 0; i < salesData.length; i++) {
     deliveriesArray.push(salesData[i].deliveriesMade);
   }
@@ -156,7 +157,6 @@ console.log(ballard.deliveriesMadePerHour());
 
 //Calculates the drivers needed for every hour of the day.
 SpecificLocation.prototype.specificDrivers = function() {
-  driversArray = [];
   for (var i = 0; i < salesData.length; i++) {
     driversArray.push(Math.round(Math.ceil(deliveriesArray[i] / 3)));
   }

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Amatic+SC:700|Waiting+for+the+Sunrise);
+@import url(https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Ubuntu);
 
 header {
   height: 500px;
@@ -14,25 +14,46 @@ header {
 #title {
   font-size: 100px;
   font-family: 'Waiting for the Sunrise';
-  text-align: center;
+  text-align: right;
   position: relative;
-  top: -200px;
+  top: -235px;
   color: #f25749;
-  z-index: 1;
+  z-index: 2;
 }
 
 #slogan {
-  font-size: 40px;
-  font-family: 'Waiting for the Sunrise';
-  text-align: center;
+  font-size: 30px;
+  font-family: 'Arial';
+  text-align: right;
   position: relative;
-  top: -335px;
-  color: #ffa563;
+  top: -370px;
+  color: #ffffff;
   background-color: #01a29a;
   border: 1px solid black;
+  z-index: 1;
+}
+
+#main-content {
+  background-color: #6abaaa;
+  position: relative;
+  top: -215px;
 }
 
 #hours {
-  position: relative;
-  top: -130px;
+  font-size: 20px;
+  padding-left: 2px;
+  color: #f1e4ba;
+  font-family: 'Ubuntu';
+}
+
+#hours-info {
+  font-size: 15px;
+
+}
+
+#pizzas {
+  font-size: 20px;
+  padding-left: 2px;
+  color: #f1e4ba;
+  font-family: 'Ubuntu';
 }
