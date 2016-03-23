@@ -247,3 +247,9 @@ international_district.writeToDocument();
 south_lake_union.writeToDocument();
 georgetown.writeToDocument();
 ravenna.writeToDocument();
+
+function pizzasServedText() {
+  var el = document.getElementById('pizzas-served');
+  el.textContent = 'dfs';
+};
+pizzasServedText();
