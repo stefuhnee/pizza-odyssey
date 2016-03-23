@@ -1,5 +1,3 @@
-var locationTable;
-
 // Generates a random number of deliveries made in a given hour given a range of min to max.
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -42,12 +40,6 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 
 // Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table.
 StoreLocation.prototype.getRow = function() {
-  // Creates the table and calls functions to generate the heading and each data row, sequentially.
-  var locationTable = document.createElement('table');
-  var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
-  // Adds table to the page using the HTML id element.
-  document.getElementById('ballard').appendChild(locationTable);
-  document.getElementById('first-hill').appendChild(locationTable);
   for (var i = 0; i < this.hourlyData.length; i++) {
     currentRowArray = [];
     while (currentRowArray.length < 4) {
@@ -117,6 +109,93 @@ firstHill.pushHourlyData(new HourlyData('11:00 pm', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('12:00 am', 8, 20, 6, 16));
 firstHill.pushHourlyData(new HourlyData('1:00 am', 8, 20, 6, 16));
 
+internationalDistrict.pushHourlyData(new HourlyData('8:00 am', 0, 4, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('9:00 am', 0, 4, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('10:00 am', 0, 4, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('11:00 am', 0, 7, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('12:00 pm', 0, 7, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('1:00 pm', 0, 7, 0, 4));
+internationalDistrict.pushHourlyData(new HourlyData('2:00 pm', 2, 15, 1, 4));
+internationalDistrict.pushHourlyData(new HourlyData('3:00 pm', 2, 15, 1, 4));
+internationalDistrict.pushHourlyData(new HourlyData('4:00 pm', 2, 15, 1, 4));
+internationalDistrict.pushHourlyData(new HourlyData('5:00 pm', 10, 26, 4, 6));
+internationalDistrict.pushHourlyData(new HourlyData('6:00 pm', 10, 26, 4, 6));
+internationalDistrict.pushHourlyData(new HourlyData('7:00 pm', 10, 26, 4, 6));
+internationalDistrict.pushHourlyData(new HourlyData('8:00 pm', 8, 22, 7, 15));
+internationalDistrict.pushHourlyData(new HourlyData('9:00 pm', 8, 22, 7, 15));
+internationalDistrict.pushHourlyData(new HourlyData('10:00 pm', 8, 22, 7, 15));
+internationalDistrict.pushHourlyData(new HourlyData('11:00 pm', 0, 2, 2, 8));
+internationalDistrict.pushHourlyData(new HourlyData('12:00 am', 0, 2, 2, 8));
+internationalDistrict.pushHourlyData(new HourlyData('1:00 am', 0, 2, 2, 8));
+
+southLakeUnion.pushHourlyData(new HourlyData('8:00 am', 0, 4, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('9:00 am', 0, 4, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('10:00 am', 0, 4, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('11:00 am', 0, 7, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('12:00 pm', 0, 7, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('1:00 pm', 0, 7, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('2:00 pm', 5, 15, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('3:00 pm', 5, 15, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('4:00 pm', 5, 15, 0, 4));
+southLakeUnion.pushHourlyData(new HourlyData('5:00 pm', 25, 39, 13, 18));
+southLakeUnion.pushHourlyData(new HourlyData('6:00 pm', 25, 39, 13, 18));
+southLakeUnion.pushHourlyData(new HourlyData('7:00 pm', 25, 39, 13, 18));
+southLakeUnion.pushHourlyData(new HourlyData('8:00 pm', 22, 36, 5, 22));
+southLakeUnion.pushHourlyData(new HourlyData('9:00 pm', 22, 36, 5, 22));
+southLakeUnion.pushHourlyData(new HourlyData('10:00 pm', 22, 36, 5, 22));
+southLakeUnion.pushHourlyData(new HourlyData('11:00 pm', 5, 21, 16, 31));
+southLakeUnion.pushHourlyData(new HourlyData('12:00 am', 5, 21, 16, 31));
+southLakeUnion.pushHourlyData(new HourlyData('1:00 am', 5, 21, 16, 31));
+
+georgetown.pushHourlyData(new HourlyData('8:00 am', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('9:00 am', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('10:00 am', 2, 7, 3, 5));
+georgetown.pushHourlyData(new HourlyData('11:00 am', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('12:00 pm', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('1:00 pm', 3, 8, 3, 9));
+georgetown.pushHourlyData(new HourlyData('2:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('3:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('4:00 pm', 1, 5, 1, 4));
+georgetown.pushHourlyData(new HourlyData('5:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('6:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('7:00 pm', 5, 13, 2, 4));
+georgetown.pushHourlyData(new HourlyData('8:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('9:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('10:00 pm', 22, 41, 15, 42));
+georgetown.pushHourlyData(new HourlyData('11:00 pm', 15, 20, 6, 21));
+georgetown.pushHourlyData(new HourlyData('12:00 am', 15, 20, 6, 21));
+georgetown.pushHourlyData(new HourlyData('1:00 am', 15, 20, 6, 21));
+
+ravenna.pushHourlyData(new HourlyData('8:00 am', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('9:00 am', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('10:00 am', 0, 4, 0, 4));
+ravenna.pushHourlyData(new HourlyData('11:00 am', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('12:00 pm', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('1:00 pm', 0, 7, 0, 4));
+ravenna.pushHourlyData(new HourlyData('2:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('3:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('4:00 pm', 2, 15, 1, 4));
+ravenna.pushHourlyData(new HourlyData('5:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('6:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('7:00 pm', 6, 9, 5, 18));
+ravenna.pushHourlyData(new HourlyData('8:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('9:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('10:00 pm', 4, 8, 2, 5));
+ravenna.pushHourlyData(new HourlyData('11:00 pm', 2, 4, 3, 11));
+ravenna.pushHourlyData(new HourlyData('12:00 am', 2, 4, 3, 11));
+ravenna.pushHourlyData(new HourlyData('1:00 am', 2, 4, 3, 11));
+
+// Creates the table and calls functions to generate the heading and each data row, sequentially.
+var locationTable = document.createElement('table');
+var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
+// Adds table to the page using the HTML id element.
+document.getElementById('ballard').appendChild(locationTable);
+document.getElementById('first-hill').appendChild(locationTable);
+
 // Fill in tables with row data
 ballard.getRow();
 firstHill.getRow();
+internationalDistrict.getRow();
+southLakeUnion.getRow();
+georgetown.getRow();
+ravenna.getRow();
