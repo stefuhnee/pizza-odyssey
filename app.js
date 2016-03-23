@@ -14,6 +14,30 @@ storeLocation.prototype.pushHourlyData = function(data) {
   this.hourlyData.push(data);
 };
 
+// Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table.
+storeLocation.prototype.getRow = function() {
+  for (var i = 0; i < this.hourlyData.length; i++) {
+    currentRowArray = [];
+    var time = this.hourlyData[i].time;
+    var pizzasSold = this.hourlyData[i].pizzasSold;
+    var deliveriesMade = this.hourlyData[i].deliveriesMade;
+    var driversNeeded = this.hourlyData[i].driversNeeded;
+    currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
+    // Creates a data row for the table
+    function generateRow(currentRowArray) {
+      var row = document.createElement('tr');
+      var col;
+      for (var i = 0; i < rowArray.length; i++) {
+        col = document.createElement('td');
+        col.textContent = rowArray[i];
+        row.appendChild(col);
+      }
+      locationTable.appendChild(row);
+    }
+    console.log(currentRowArray);
+  };
+};
+
 // Creates new object HourlyData with 4 properties. Eventually becomes a property of the storeLocation.
 function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDeliveriesMade) {
   this.time = time;
@@ -49,7 +73,7 @@ ballard.pushHourlyData(new HourlyData('10:00 pm', 1, 3, 4, 12));
 ballard.pushHourlyData(new HourlyData('11:00 pm', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('12:00 am', 8, 15, 6, 16));
 ballard.pushHourlyData(new HourlyData('1:00 am', 8, 15, 6, 16));
-
+console.log(ballard.hourlyData);
 // Creates a heading row for the table
 function generateHeadingRow(tableHeadings) {
   var row = document.createElement('tr');
@@ -60,92 +84,15 @@ function generateHeadingRow(tableHeadings) {
     row.appendChild(col);
   }
   return row;
-}
-
-// Creates a data row for the table
-function generateRow(rowArray) {
-  var row = document.createElement('tr');
-  var col;
-  for (var i = 0; i < rowArray.length; i++) {
-    col = document.createElement('td');
-    col.textContent = rowArray[i];
-    row.appendChild(col);
-  }
-  return row;
-}
+};
 
 // Creates the table and calls functions to generate the heading and each data row, sequentially.
 var locationTable = document.createElement('table');
 var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
-var secondRow = generateRow(['placeholder']);
-
-// Adds rows to the table.
-locationTable.appendChild(firstRow);
-locationTable.appendChild(secondRow);
 
 // Adds table to the page using the HTML id element.
 document.getElementById('ballard').appendChild(locationTable);
-console.log(locationTable);
 
-// // //Displays the required information in the format given.
-// // SpecificLocation.prototype.writeToDocument = function() {
-// //   // Cycle through each hour object in the array
-// //   for (var i = 0; i < this.salesData.length; i++) {
-// //     // Target HTML ul element by name ID, which matches the name parameter and create new li
-// //     var el = document.getElementById(this.name);
-// //     console.log('element referred to: ' + el);
-// //     var newLi = document.createElement('li');
-// //     // If there are the value at index i for drivers needed is 0, write No drivers recommended.
-// //     if (this.salesData[i].driversNeeded === 0) {
-// //       newLi.textContent = this.salesData[i].time + ' ' + this.salesData[i].pizzasSold + ' pizzas, ' + this.salesData[i].deliveriesMade + ' deliveries -- [ No drivers recommended ]';
-// //       el.appendChild(newLi);
-// //       // Otherwise, write how many drivers are recommended.
-// //     } else {
-// //       newLi.textContent = this.salesData[i].time + ' ' + this.salesData[i].pizzasSold + ' pizzas, ' + this.salesData[i].deliveriesMade + ' deliveries -- [ ' + 'drivers recommended: ' + this.salesData[i].driversNeeded + ']';
-// //       el.appendChild(newLi);
-// //     }
-// //   };
-// // };
-//
-// var tableHeadings = ['Time', 'Min Pizza/hr', 'Max Pizza/hr', 'Min Delivery/hr', 'Max Delivery/hr'];
-//
-// var rowOne = ['', '', '', '', ''];
-//
-// var ballardSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// var ballardMinPizzas = [0, 0, 0, 5, 5, 5, 2, 2, 2, 0, 0, 0, 1, 1, 1, 8, 8, 8];
-// var ballardMaxPizzas = [3, 3, 3, 10, 10, 10, 13, 13, 13, 15, 15, 15, 3, 3, 3, 15, 15, 15];
-//
-// var firstHillSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// var internationalDistrictSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// var southLakeUnionSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// var georgetownSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// var ravennaSalesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
-//
-// // Defining each location as a new object
-// var ballard = new SpecificLocation('ballard', ballardSalesData, ballardMinPizzas, ballardMaxPizzas);
-// var firstHill = new SpecificLocation('first-hill', firstHillSalesData);
-// var internationalDistrict = new SpecificLocation('international-district', internationalDistrictSalesData);
-// var southLakeUnion = new SpecificLocation('south-lake-union', southLakeUnionSalesData);
-// var georgetown = new SpecificLocation('georgetown', georgetownSalesData);
-// var ravenna = new SpecificLocation('ravenna', ravennaSalesData);
-//
-// ballard.specificDrivers();
-// firstHill.specificDrivers();
-// internationalDistrict.specificDrivers();
-// southLakeUnion.specificDrivers();
-// georgetown.specificDrivers();
-// ravenna.specificDrivers();
-//
-// ballard.writeToDocument();
-// firstHill.writeToDocument();
-// internationalDistrict.writeToDocument();
-// southLakeUnion.writeToDocument();
-// georgetown.writeToDocument();
-// ravenna.writeToDocument();
-//
-// generateHeadingRow(tableHeadings);
+ballard.getRow();
+
+generateHeadingRow(tableHeadings);
