@@ -1,13 +1,3 @@
-var pizzasSoldPerHour = [];
-var deliveriesMadePerHour = [];
-var minPizzas;
-var maxPizzas;
-var minDeliveries;
-var maxDeliveries;
-var pizzasSold;
-var DriversPerHour = [];
-var el;
-
 var eightAM = {
   time: '8:00am',
   pizzasSold: pizzasPerHour(0,4),
@@ -128,43 +118,12 @@ function deliveriesPerHour(minDeliveries, maxDeliveries) {
   return Math.floor(Math.random() * (maxDeliveries - minDeliveries) + minDeliveries);
 };
 
-//References the salesData array, takes a time object and reads the value of the pizzasSold property, then pushes that value to the array PizzasSoldPerHour.
-function PizzaDataPerDay() {
-  for (var i = 0; i < salesData.length; i++) {
-    pizzasSoldPerHour.push(salesData[i].pizzasSold);
-  }
-  return pizzasSoldPerHour;
-}
-console.log(PizzaDataPerDay());
-
-//References the salesData array, takes a time object and reads the value of the deliveriesMade property, then pushes that value to the array deliveriesMadePerHour.
-function deliveriesDataPerDay() {
-  for (i = 0; i < salesData.length; i++) {
-    deliveriesMadePerHour.push(salesData[i].deliveriesMade);
-  }
-  return deliveriesMadePerHour;
-}
-console.log(deliveriesDataPerDay());
-
-//Calculates the drivers needed for every hour of the day.
-function driversPerDay() {
-  for (var i = 0; i < salesData.length; i++) {
-    DriversPerHour.push(Math.round(Math.ceil(deliveriesMadePerHour[i] / 3)));
-  }
-  return DriversPerHour;
-};
-console.log(driversPerDay());
-
 //Creates SpecificLocation object
 function SpecificLocation(name) {
   this.name = name;
 };
 
-//Adding methods to object constructor to obtain arrays
-SpecificLocation.prototype.pizzasSoldPerHour = PizzaDataPerDay();
-SpecificLocation.prototype.deliveriesMadePerHour = deliveriesDataPerDay();
-SpecificLocation.prototype.specificDrivers = driversPerDay();
-
+// Defining each location as a new object
 var ballard = new SpecificLocation('ballard');
 var first_hill = new SpecificLocation('first-hill');
 var international_district = new SpecificLocation('international-district');
@@ -172,29 +131,65 @@ var south_lake_union = new SpecificLocation('south-lake-union');
 var georgetown = new SpecificLocation('georgetown');
 var ravenna = new SpecificLocation('ravenna');
 
+// Adding methods to object constructor to obtain arrays
+
+// References the salesData array, takes a time object and reads the value of the pizzasSold property, then pushes that value to the array PizzasSoldPerHour.
+SpecificLocation.prototype.pizzasSoldPerHour = function() {
+  pizzasArray = [];
+  for (var i = 0; i < salesData.length; i++) {
+    pizzasArray.push(salesData[i].pizzasSold);
+  }
+  return pizzasArray;
+};
+console.log(ballard.pizzasSoldPerHour());
+console.log(first_hill.pizzasSoldPerHour());
+
+//References the salesData array, takes a time object and reads the value of the deliveriesMade property, then pushes that value to the array deliveriesMadePerHour.
+SpecificLocation.prototype.deliveriesMadePerHour = function() {
+  deliveriesArray = [];
+  for (i = 0; i < salesData.length; i++) {
+    deliveriesArray.push(salesData[i].deliveriesMade);
+  }
+  return deliveriesArray;
+};
+console.log(ballard.deliveriesMadePerHour());
+
+//Calculates the drivers needed for every hour of the day.
+SpecificLocation.prototype.specificDrivers = function() {
+  driversArray = [];
+  for (var i = 0; i < salesData.length; i++) {
+    driversArray.push(Math.round(Math.ceil(deliveriesArray[i] / 3)));
+  }
+  return driversArray;
+};
+console.log(ballard.specificDrivers());
+
 //Displays the required information in the format given.
-function writeToDocument(name) {
+SpecificLocation.prototype.writeToDocument = function() {
+  pizzasArray = this.pizzasSoldPerHour();
+  deliveriesArray = this.deliveriesMadePerHour();
+  driversArray = this.specificDrivers();
   // Cycle through each hour object in the array
   for (var i = 0; i < salesData.length; i++) {
     // Target HTML ul element by name ID, which matches the name parameter and create new li
-    el = document.getElementById(name);
+    el = document.getElementById(this.name);
     newLi = document.createElement('li');
     // If there are the value at index i for drivers needed is 0, write No drivers recommended.
-    if (DriversPerHour[i] === 0) {
-      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ No drivers recommended ]';
+    if (driversArray[i] === 0) {
+      newLi.textContent = salesData[i].time + ' ' + pizzasArray[i] + ' pizzas, ' + deliveriesArray[i] + ' deliveries -- [ No drivers recommended ]';
       el.appendChild(newLi);
       // Otherwise, write how many drivers are recommended.
     } else {
-      newLi.textContent = salesData[i].time + ' ' + pizzasSoldPerHour[i] + ' pizzas, ' + deliveriesMadePerHour[i] + ' deliveries -- [ ' + 'drivers recommended: ' + DriversPerHour[i] + ']';
+      newLi.textContent = salesData[i].time + ' ' + pizzasArray[i] + ' pizzas, ' + deliveriesArray[i] + ' deliveries -- [ ' + 'drivers recommended: ' + driversArray[i] + ']';
       el.appendChild(newLi);
     }
 
   }
-}
+};
 
-writeToDocument('ballard');
-writeToDocument('first-hill');
-writeToDocument('international-district');
-writeToDocument('south-lake-union');
-writeToDocument('georgetown');
-writeToDocument('ravenna');
+ballard.writeToDocument();
+first_hill.writeToDocument();
+international_district.writeToDocument();
+south_lake_union.writeToDocument();
+georgetown.writeToDocument();
+ravenna.writeToDocument();
