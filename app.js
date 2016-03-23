@@ -1,112 +1,166 @@
-var eightAM = {
-  time: '8:00am',
-  pizzasSold: pizzasPerHour(0,4),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getEightAM() {
+  var eightAM = {
+    time: '8:00am',
+    pizzasSold: pizzasPerHour(0,4),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return eightAM;
 };
 
-var nineAM = {
-  time: '9:00am',
-  pizzasSold: pizzasPerHour(0,4),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getNineAM() {
+  var nineAM = {
+    time: '9:00am',
+    pizzasSold: pizzasPerHour(0,4),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return nineAM;
 };
 
-var tenAM = {
-  time: '10:00am',
-  pizzasSold: pizzasPerHour(0,4),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getTenAM() {
+  var tenAM = {
+    time: '10:00am',
+    pizzasSold: pizzasPerHour(0,4),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return tenAM;
 };
 
-var elevenAM = {
-  time: '11:00am',
-  pizzasSold: pizzasPerHour(0,7),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getElevenAM() {
+  var elevenAM = {
+    time: '11:00am',
+    pizzasSold: pizzasPerHour(0,7),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return elevenAM;
 };
 
-var twelvePM = {
-  time: '12:00pm',
-  pizzasSold: pizzasPerHour(0,7),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getTwelvePM() {
+  var twelvePM = {
+    time: '12:00pm',
+    pizzasSold: pizzasPerHour(0,7),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return twelvePM;
 };
 
-var onePM = {
-  time: '1:00pm',
-  pizzasSold: pizzasPerHour(0,7),
-  deliveriesMade: deliveriesPerHour(0,4)
+function getOnePM() {
+  var onePM = {
+    time: '1:00pm',
+    pizzasSold: pizzasPerHour(0,7),
+    deliveriesMade: deliveriesPerHour(0,4)
+  };
+  return onePM;
 };
 
-var twoPM = {
-  time: '2:00pm',
-  pizzasSold: pizzasPerHour(2,15),
-  deliveriesMade: deliveriesPerHour(1,4)
+function getTwoPM() {
+  var twoPM = {
+    time: '2:00pm',
+    pizzasSold: pizzasPerHour(2,15),
+    deliveriesMade: deliveriesPerHour(1,4)
+  };
+  return twoPM;
 };
 
-var threePM = {
-  time: '3:00pm',
-  pizzasSold: pizzasPerHour(2,15),
-  deliveriesMade: deliveriesPerHour(1,4)
+function getThreePM() {
+  var threePM = {
+    time: '3:00pm',
+    pizzasSold: pizzasPerHour(2,15),
+    deliveriesMade: deliveriesPerHour(1,4)
+  };
+  return threePM;
 };
 
-var fourPM = {
-  time: '4:00pm',
-  pizzasSold: pizzasPerHour(2,15),
-  deliveriesMade: deliveriesPerHour(1,4)
+function getFourPM() {
+  var fourPM = {
+    time: '4:00pm',
+    pizzasSold: pizzasPerHour(2,15),
+    deliveriesMade: deliveriesPerHour(1,4)
+  };
+  return fourPM;
 };
 
-var fivePM = {
-  time: '5:00pm',
-  pizzasSold: pizzasPerHour(15,35),
-  deliveriesMade: deliveriesPerHour(3,8)
+function getFivePM() {
+  var fivePM = {
+    time: '5:00pm',
+    pizzasSold: pizzasPerHour(15,35),
+    deliveriesMade: deliveriesPerHour(3,8)
+  };
+  return fivePM;
 };
 
-var sixPM = {
-  time: '6:00pm',
-  pizzasSold: pizzasPerHour(15,35),
-  deliveriesMade: deliveriesPerHour(3,8)
+function getSixPM() {
+  var sixPM = {
+    time: '6:00pm',
+    pizzasSold: pizzasPerHour(15,35),
+    deliveriesMade: deliveriesPerHour(3,8)
+  };
+  return sixPM;
 };
 
-var sevenPM = {
-  time: '7:00pm',
-  pizzasSold: pizzasPerHour(15,35),
-  deliveriesMade: deliveriesPerHour(3,8)
+function getSevenPM() {
+  var sevenPM = {
+    time: '7:00pm',
+    pizzasSold: pizzasPerHour(15,35),
+    deliveriesMade: deliveriesPerHour(3,8)
+  };
+  return sevenPM;
 };
 
-var eightPM = {
-  time: '8:00pm',
-  pizzasSold: pizzasPerHour(12,31),
-  deliveriesMade: deliveriesPerHour(5,12)
+function getEightPM() {
+  var eightPM = {
+    time: '8:00pm',
+    pizzasSold: pizzasPerHour(12,31),
+    deliveriesMade: deliveriesPerHour(5,12)
+  };
+  return eightPM;
 };
 
-var ninePM = {
-  time: '9:00pm',
-  pizzasSold: pizzasPerHour(12,31),
-  deliveriesMade: deliveriesPerHour(5,12)
+function getNinePM() {
+  var ninePM = {
+    time: '9:00pm',
+    pizzasSold: pizzasPerHour(12,31),
+    deliveriesMade: deliveriesPerHour(5,12)
+  };
+  return ninePM;
 };
 
-var tenPM = {
-  time: '10:00pm',
-  pizzasSold: pizzasPerHour(12,31),
-  deliveriesMade: deliveriesPerHour(5,12)
+function getTenPM() {
+  var tenPM = {
+    time: '10:00pm',
+    pizzasSold: pizzasPerHour(12,31),
+    deliveriesMade: deliveriesPerHour(5,12)
+  };
+  return tenPM;
 };
 
-var elevenPM = {
-  time: '11:00pm',
-  pizzasSold: pizzasPerHour(5,20),
-  deliveriesMade: deliveriesPerHour(6,11)
+function getElevenPM() {
+  var elevenPM = {
+    time: '11:00pm',
+    pizzasSold: pizzasPerHour(5,20),
+    deliveriesMade: deliveriesPerHour(6,11)
+  };
+  return elevenPM;
 };
 
-var twelveAM = {
-  time: '12:00am',
-  pizzasSold: pizzasPerHour(5,20),
-  deliveriesMade: deliveriesPerHour(6,11)
+function getTwelveAM() {
+  var twelveAM = {
+    time: '12:00am',
+    pizzasSold: pizzasPerHour(5,20),
+    deliveriesMade: deliveriesPerHour(6,11)
+  };
+  return twelveAM;
 };
 
-var oneAM = {
-  time: '1:00am',
-  pizzasSold: pizzasPerHour(5,20),
-  deliveriesMade: deliveriesPerHour(6,11)
+function getOneAM() {
+  var oneAM = {
+    time: '1:00am',
+    pizzasSold: pizzasPerHour(5,20),
+    deliveriesMade: deliveriesPerHour(6,11)
+  };
+  return oneAM;
 };
 
-var salesData = [eightAM, nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM, sixPM, sevenPM, eightPM, ninePM, tenPM, elevenPM, twelveAM, oneAM];
+var salesData = [getEightAM(), getNineAM(), getTenAM(), getElevenAM(), getTwelvePM(), getOnePM(), getTwoPM(), getThreePM(), getFourPM(), getFivePM(), getSixPM(), getSevenPM(), getEightPM(), getNinePM(), getTenPM(), getElevenPM(), getTwelveAM(), getOneAM()];
 
 //Generates a random number of pizzas delivered in a given hour given a range of min to max.
 function pizzasPerHour(minPizzas, maxPizzas) {
