@@ -4,14 +4,14 @@ header {
   height: 500px;
 }
 
-#pizza-cat {
+.pizza-cat {
   height: 283px;
   width: 300px;
   margin-right: auto;
   margin-left: auto;
 }
 
-#title {
+.title {
   font-size: 100px;
   font-family: 'Waiting for the Sunrise';
   text-align: right;
@@ -22,7 +22,7 @@ header {
   text-shadow: 0 1px 1px #000000
 }
 
-#slogan {
+.slogan {
   font-size: 30px;
   font-family: 'Arial';
   text-align: right;
@@ -35,32 +35,32 @@ header {
   border-radius: 10px;
 }
 
-#main-content {
+.main-content {
   background-color: #6abaaa;
   position: relative;
   top: -215px;
   border-radius: 10px;
 }
 
-#hours {
+.hours {
   font-size: 20px;
   padding-left: 2px;
   color: #f1e4ba;
   font-family: 'Ubuntu';
 }
 
-#hours-info {
+.hours-info {
   font-size: 15px;
 
 }
 
-#pizzas {
+.pizzas {
   font-size: 20px;
   padding-left: 2px;
   color: #f1e4ba;
   font-family: 'Ubuntu';
 }
 
-#pizzas-served {
+.pizzas-served {
 
 }
