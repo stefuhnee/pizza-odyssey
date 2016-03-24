@@ -18,7 +18,7 @@ function generateHeadingRow(tableHeadings) {
     col.textContent = tableHeadings[i];
     row.appendChild(col);
   }
-  locationTable.appendChild(row);
+  return row;
 };
 
 // Creates a data row for the table
@@ -40,18 +40,21 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 
 // Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table.
 StoreLocation.prototype.getRow = function() {
+  var tableEl = document.createElement('table');
+  var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
+  tableEl.appendChild(firstRow);
   for (var i = 0; i < this.hourlyData.length; i++) {
     currentRowArray = [];
-    while (currentRowArray.length < 4) {
-      var time = this.hourlyData[i].time;
-      var pizzasSold = this.hourlyData[i].pizzasSold;
-      var deliveriesMade = this.hourlyData[i].deliveriesMade;
-      var driversNeeded = this.hourlyData[i].driversNeeded;
-      currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
-    }
-    locationTable.appendChild(generateRow(currentRowArray));
+    var time = this.hourlyData[i].time;
+    var pizzasSold = this.hourlyData[i].pizzasSold;
+    var deliveriesMade = this.hourlyData[i].deliveriesMade;
+    var driversNeeded = this.hourlyData[i].driversNeeded;
+    currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
+    tableEl.appendChild(generateRow(currentRowArray));
     console.log(currentRowArray);
   }
+  var figureEl = document.getElementById(this.name);
+  figureEl.appendChild(tableEl);
 };
 
 // Creates new object HourlyData with 4 properties. Eventually becomes a property of the StoreLocation object.
@@ -186,11 +189,16 @@ ravenna.pushHourlyData(new HourlyData('12:00 am', 2, 4, 3, 11));
 ravenna.pushHourlyData(new HourlyData('1:00 am', 2, 4, 3, 11));
 
 // Creates the table and calls functions to generate the heading and each data row, sequentially.
-var locationTable = document.createElement('table');
-var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
+// var locationTableBallard = document.createElement('table');
+// var locationTableFirstHill = document.createElement('table');
+// var locationTableInternationalDistrict = document.createElement('table');
+// var locationTableSouthLakeUnion = document.createElement('table');
+// var locationTableGeorgetown = document.createElement('table');
+// var locationTableRavenna = document.createElement('table');
+// var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
 // Adds table to the page using the HTML id element.
-document.getElementById('ballard').appendChild(locationTable);
-document.getElementById('first-hill').appendChild(locationTable);
+// document.getElementById('ballard').appendChild(locationTable);
+// document.getElementById('first-hill').appendChild(locationTable);
 
 // Fill in tables with row data
 ballard.getRow();
