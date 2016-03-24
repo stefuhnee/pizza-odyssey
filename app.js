@@ -27,7 +27,6 @@ StoreLocation.prototype.getRow = function() {
       tableEl.appendChild(generateRow(currentRowArray));
     }
     var figureEl = document.getElementById(this.name);
-
     figureEl.appendChild(tableEl);
   }
 };
