@@ -1,3 +1,5 @@
+// idea: ask for 3 hours of time at a time.... push to array.
+
 var pizzasServed = document.getElementById('pizzas-served');
 var createNewLocation = document.getElementById('location-form');
 var count = 0;
@@ -34,7 +36,13 @@ StoreLocation.prototype.getRow = function() {
       currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
       tableEl.appendChild(generateRow(currentRowArray));
     }
-    figureEl.appendChild(tableEl);
+    if (count === 0) {
+      console.log('Count is 0');
+      figureEl.appendChild(tableEl);
+    } else {
+      console.log('Count is not 0, row should be added.');
+      tableEl.appendChild(generateRow(currentRowArray));
+    }
   }
 };
 
