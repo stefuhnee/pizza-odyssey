@@ -49,7 +49,7 @@ function userInputStore(event) {
   var userLocationName = event.target.locationName.value;
   console.log('Location: ' + userLocationName);
   var userLocationObject = new StoreLocation(userLocationName);
-  console.log('Location object: ' + userLocationObject);
+  console.log('Location object: ', userLocationObject);
   var userTime = event.target.time.value;
   console.log('Time entered: ' + userTime);
   var userMinPizzas = parseInt(event.target.minPizzas.value);
@@ -62,7 +62,8 @@ function userInputStore(event) {
   console.log('Max deliveries entered: ' + userMaxDeliveries);
   //Adds data to hourlyData property of store object.
   userLocationObject.pushHourlyData(new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries));
-  console.log('Hourly Data: ' + userLocationObject.HourlyData);
+  console.log('Hourly Data: ', userLocationObject.hourlyData);
+  return userLocationObject;
 }
 
 // Adds total pizzas sold across all stores
