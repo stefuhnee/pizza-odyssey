@@ -1,3 +1,5 @@
+var pizzasServed = document.getElementById('pizzas-served');
+console.log('Pizzas Served: ' + pizzasServed);
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
   this.name = name;
@@ -12,20 +14,22 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 // Create a table for the StoreLocation object, create and add the table heading row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
 StoreLocation.prototype.getRow = function() {
   var tableEl = document.createElement('table');
-  var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
-  tableEl.appendChild(firstRow);
-  for (var i = 0; i < this.hourlyData.length; i++) {
-    currentRowArray = [];
-    var time = this.hourlyData[i].time;
-    var pizzasSold = this.hourlyData[i].pizzasSold;
-    var deliveriesMade = this.hourlyData[i].deliveriesMade;
-    var driversNeeded = this.hourlyData[i].driversNeeded;
-    currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
-    tableEl.appendChild(generateRow(currentRowArray));
-    console.log(currentRowArray);
+  if (figureEl){
+    var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
+    tableEl.appendChild(firstRow);
+    for (var i = 0; i < this.hourlyData.length; i++) {
+      currentRowArray = [];
+      var time = this.hourlyData[i].time;
+      var pizzasSold = this.hourlyData[i].pizzasSold;
+      var deliveriesMade = this.hourlyData[i].deliveriesMade;
+      var driversNeeded = this.hourlyData[i].driversNeeded;
+      currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
+      tableEl.appendChild(generateRow(currentRowArray));
+    }
+    var figureEl = document.getElementById(this.name);
+
+    figureEl.appendChild(tableEl);
   }
-  var figureEl = document.getElementById(this.name);
-  figureEl.appendChild(tableEl);
 };
 
 // Calculates total pizzas sold in one store
@@ -212,5 +216,4 @@ georgetown.getRow();
 ravenna.getRow();
 
 console.log(totalPizzasSoldAcrossAllLocations());
-var pizzasServed = document.getElementById('pizzas-served');
-pizzasServed.textContent = totalPizzasSoldAcrossAllLocations();
+pizzasServed.textContent = 'text';
