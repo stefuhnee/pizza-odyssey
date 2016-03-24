@@ -40,7 +40,7 @@ StoreLocation.prototype.calculatePizzasServed = function() {
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
   totalPizzasSoldPerDay = ballard.calculatePizzasServed() + firstHill.calculatePizzasServed() + internationalDistrict.calculatePizzasServed() + southLakeUnion.calculatePizzasServed() + georgetown.calculatePizzasServed() + ravenna.calculatePizzasServed();
-  return totalPizzasSoldPerDay;
+  return totalPizzasSoldPerDay.toString();
 }
 
 // Generates a random number of deliveries made in a given hour given a range of min to max.
@@ -210,4 +210,7 @@ internationalDistrict.getRow();
 southLakeUnion.getRow();
 georgetown.getRow();
 ravenna.getRow();
+
 console.log(totalPizzasSoldAcrossAllLocations());
+var pizzasServed = document.getElementById('pizzas-served');
+pizzasServed.textContent = totalPizzasSoldAcrossAllLocations();
