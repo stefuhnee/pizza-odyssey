@@ -1,5 +1,3 @@
-var totalPizzasSold;
-
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
   this.name = name;
@@ -32,11 +30,18 @@ StoreLocation.prototype.getRow = function() {
 
 // Calculates total pizzas sold in one store
 StoreLocation.prototype.calculatePizzasServed = function() {
+  var totalPizzasSold = 0;
   for (var i = 0; i < this.hourlyData.length; i++) {
     totalPizzasSold += this.hourlyData[i].pizzasSold;
   }
   return totalPizzasSold;
 };
+
+// Adds total pizzas sold across all stores
+function totalPizzasSoldAcrossAllLocations() {
+  totalPizzasSoldPerDay = ballard.calculatePizzasServed() + firstHill.calculatePizzasServed() + internationalDistrict.calculatePizzasServed() + southLakeUnion.calculatePizzasServed() + georgetown.calculatePizzasServed() + ravenna.calculatePizzasServed();
+  return totalPizzasSoldPerDay;
+}
 
 // Generates a random number of deliveries made in a given hour given a range of min to max.
 function getRandomNumber(min, max) {
@@ -205,5 +210,4 @@ internationalDistrict.getRow();
 southLakeUnion.getRow();
 georgetown.getRow();
 ravenna.getRow();
-
-console.log(ballard.calculatePizzasServed());
+console.log(totalPizzasSoldAcrossAllLocations());
