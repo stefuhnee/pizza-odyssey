@@ -33,6 +33,21 @@ StoreLocation.prototype.getRow = function() {
   }
 };
 
+// Creates table from User input.
+StoreLocation.prototype.getUserRow = function() {
+  var figureEl = document.getElementById('locationName');
+  if (figureEl){
+    currentRowArray = [];
+    var time = this.hourlyData.time;
+    var pizzasSold = this.hourlyData.pizzasSold;
+    var deliveriesMade = this.hourlyData.deliveriesMade;
+    var driversNeeded = this.hourlyData.driversNeeded;
+    currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
+    tableEl.appendChild(generateRow(currentRowArray));
+  };
+  figureEl.appendChild(tableEl);
+};
+
 // Calculates total pizzas sold in one store
 StoreLocation.prototype.calculatePizzasServed = function() {
   var totalPizzasSold = 0;
@@ -47,24 +62,20 @@ function userInputStore(event) {
   event.preventDefault();
   //Collects data from form and stores in variables.
   var userLocationName = event.target.locationName.value;
-  console.log('Location: ' + userLocationName);
   var userLocationObject = new StoreLocation(userLocationName);
   console.log('Location object: ', userLocationObject);
   var userTime = event.target.time.value;
-  console.log('Time entered: ' + userTime);
   var userMinPizzas = parseInt(event.target.minPizzas.value);
-  console.log('Min pizzas entered: ' + userMinPizzas);
   var userMaxPizzas = parseInt(event.target.maxPizzas.value);
-  console.log('Max pizzas entered: ' + userMaxPizzas);
   var userMinDeliveries = parseInt(event.target.minDeliveries.value);
-  console.log('Min Deliveries entered: ' + userMinDeliveries);
   var userMaxDeliveries = parseInt(event.target.maxDeliveries.value);
-  console.log('Max deliveries entered: ' + userMaxDeliveries);
   //Adds data to hourlyData property of store object.
   userLocationObject.pushHourlyData(new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries));
   console.log('Hourly Data: ', userLocationObject.hourlyData);
-  return userLocationObject;
-}
+  //Creates table and adds heading row
+  var figureEl = document.getElementById('locationName');
+  userLocationObject.getUserRow();
+};
 
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
