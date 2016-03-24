@@ -215,4 +215,4 @@ georgetown.getRow();
 ravenna.getRow();
 
 console.log(totalPizzasSoldAcrossAllLocations());
-pizzasServed.textContent = 'text';
+pizzasServed.textContent = totalPizzasSoldPerDay;

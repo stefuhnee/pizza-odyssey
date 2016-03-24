@@ -47,9 +47,13 @@ header {
   font-family: 'Ubuntu';
 }
 
-.hours-info {
-  font-size: 15px;
+.hours-title {
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000000
+}
 
+.hours-info {
+  font-size: 20px;
 }
 
 .pizzas {
@@ -57,4 +61,7 @@ header {
   padding-left: 2px;
   color: #f1e4ba;
   font-family: 'Ubuntu';
+  position: relative;
+  top: 15px;
+  text-align: center;
 }
