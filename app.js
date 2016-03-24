@@ -1,8 +1,11 @@
 var pizzasServed = document.getElementById('pizzas-served');
+var createNewLocation = document.getElementById('location-form');
+
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
   this.name = name;
   this.hourlyData = [];
+
 }
 
 // Adds hourly data into the empty hourlyData array within the object.
@@ -38,6 +41,29 @@ StoreLocation.prototype.calculatePizzasServed = function() {
   }
   return totalPizzasSold;
 };
+
+// Creates new store location object
+function userInputStore(event) {
+  event.preventDefault();
+  //Collects data from form and stores in variables.
+  var userLocationName = event.target.locationName.value;
+  console.log('Location: ' + userLocationName);
+  var userLocationObject = new StoreLocation(userLocationName);
+  console.log('Location object: ' + userLocationObject);
+  var userTime = event.target.time.value;
+  console.log('Time entered: ' + userTime);
+  var userMinPizzas = parseInt(event.target.minPizzas.value);
+  console.log('Min pizzas entered: ' + userMinPizzas);
+  var userMaxPizzas = parseInt(event.target.maxPizzas.value);
+  console.log('Max pizzas entered: ' + userMaxPizzas);
+  var userMinDeliveries = parseInt(event.target.minDeliveries.value);
+  console.log('Min Deliveries entered: ' + userMinDeliveries);
+  var userMaxDeliveries = parseInt(event.target.maxDeliveries.value);
+  console.log('Max deliveries entered: ' + userMaxDeliveries);
+  //Adds data to hourlyData property of store object.
+  userLocationObject.pushHourlyData(new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries));
+  console.log('Hourly Data: ' + userLocationObject.HourlyData);
+}
 
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
@@ -218,3 +244,4 @@ ravenna.getRow();
 
 console.log(totalPizzasSoldAcrossAllLocations());
 totalPizzasSoldAcrossAllLocations();
+createNewLocation.addEventListener('submit', userInputStore);
