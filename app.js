@@ -1,5 +1,6 @@
 var pizzasServed = document.getElementById('pizzas-served');
 var createNewLocation = document.getElementById('location-form');
+var count = 0;
 
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
@@ -15,13 +16,15 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 // Create a table for the StoreLocation object, create and add the table heading row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
 StoreLocation.prototype.getRow = function() {
   var figureEl = document.getElementById('all-location-data');
-  var headingEl = document.createElement('h2');
-  headingEl.textContent = this.name;
-  figureEl.appendChild(headingEl);
-  var tableEl = document.createElement('table');
-  if (figureEl){
+  if (figureEl && count === 0){
+    var headingEl = document.createElement('h2');
+    headingEl.textContent = this.name;
+    figureEl.appendChild(headingEl);
+    var tableEl = document.createElement('table');
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
+  };
+  if (figureEl) {
     for (var i = 0; i < this.hourlyData.length; i++) {
       currentRowArray = [];
       var time = this.hourlyData[i].time;
@@ -61,6 +64,7 @@ function userInputStore(event) {
   userLocationObject.pushHourlyData(new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries));
   console.log('Hourly Data: ', userLocationObject.hourlyData);
   userLocationObject.getRow();
+  count++;
 };
 
 // Adds total pizzas sold across all stores
