@@ -16,11 +16,11 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 // Create a table for the StoreLocation object, create and add the table heading row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
 StoreLocation.prototype.getRow = function() {
   var figureEl = document.getElementById('all-location-data');
+  var tableEl = document.createElement('table');
   if (figureEl && count === 0){
     var headingEl = document.createElement('h2');
     headingEl.textContent = this.name;
     figureEl.appendChild(headingEl);
-    var tableEl = document.createElement('table');
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
   };
