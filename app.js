@@ -1,5 +1,4 @@
 var pizzasServed = document.getElementById('pizzas-served');
-console.log('Pizzas Served: ' + pizzasServed);
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
   this.name = name;
@@ -14,6 +13,7 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 // Create a table for the StoreLocation object, create and add the table heading row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
 StoreLocation.prototype.getRow = function() {
   var tableEl = document.createElement('table');
+  var figureEl = document.getElementById(this.name);
   if (figureEl){
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
@@ -26,7 +26,6 @@ StoreLocation.prototype.getRow = function() {
       currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
       tableEl.appendChild(generateRow(currentRowArray));
     }
-    var figureEl = document.getElementById(this.name);
     figureEl.appendChild(tableEl);
   }
 };
@@ -42,8 +41,11 @@ StoreLocation.prototype.calculatePizzasServed = function() {
 
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
-  totalPizzasSoldPerDay = ballard.calculatePizzasServed() + firstHill.calculatePizzasServed() + internationalDistrict.calculatePizzasServed() + southLakeUnion.calculatePizzasServed() + georgetown.calculatePizzasServed() + ravenna.calculatePizzasServed();
-  return totalPizzasSoldPerDay.toString();
+  var totalPizzasSoldPerDay = 0;
+  if (pizzasServed) {
+    totalPizzasSoldPerDay = ballard.calculatePizzasServed() + firstHill.calculatePizzasServed() + internationalDistrict.calculatePizzasServed() + southLakeUnion.calculatePizzasServed() + georgetown.calculatePizzasServed() + ravenna.calculatePizzasServed();
+    pizzasServed.textContent = totalPizzasSoldPerDay;
+  }
 }
 
 // Generates a random number of deliveries made in a given hour given a range of min to max.
@@ -215,4 +217,4 @@ georgetown.getRow();
 ravenna.getRow();
 
 console.log(totalPizzasSoldAcrossAllLocations());
-pizzasServed.textContent = totalPizzasSoldPerDay;
+totalPizzasSoldAcrossAllLocations();
