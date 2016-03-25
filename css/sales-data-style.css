@@ -1,0 +1,22 @@
+td, table, tr, th {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+input[type=text] {
+  border-radius: 5px;
+}
+
+input, button {
+  font-family: Verdana;
+}
+
+legend {
+  font-family: Verdana;
+  font-size: 18px;
+  color: red;
+}
