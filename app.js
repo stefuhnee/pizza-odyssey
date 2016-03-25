@@ -54,7 +54,8 @@ function userInputCreateStore(event) {
   event.preventDefault();
   // Targets section containing tables and captures location name from first form to create header with store name and user generated table and append to the section.
   var userTableSection = document.getElementById('all-location-data');
-  var userLocationName = event.target.locationName.value;
+  var userLocationName = (event.target.locationName.value).split(' ');
+  userLocationName.join('-');
   var headingEl = document.createElement('h2');
   headingEl.textContent = userLocationName;
   userTableSection.appendChild(headingEl);
@@ -70,7 +71,8 @@ function userInputCreateStore(event) {
 // Captures data from second form, including name of location (needs to match value used to create table).
 function userInputAddHourData(event){
   event.preventDefault();
-  var userLocationName = event.target.locationName.value;
+  var userLocationName = (event.target.locationName.value).split(' ');
+  userLocationName.join('-');
   var tableEl = document.getElementById(userLocationName);
 
   var userTime = event.target.time.value;
