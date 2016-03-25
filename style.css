@@ -1,5 +1,6 @@
 td, table, tr, th {
   border: 1px solid black;
+  padding: 3px;
 }
 
 table {
@@ -46,6 +47,7 @@ table {
   position: relative;
   top: -215px;
   border-radius: 10px;
+  padding: 5px;
 }
 
 .hours {

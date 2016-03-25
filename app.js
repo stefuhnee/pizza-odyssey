@@ -1,8 +1,8 @@
 // idea: ask for 3 hours of time at a time.... push to array.
 
 var pizzasServed = document.getElementById('pizzas-served');
-var createNewLocation = document.getElementById('location-form');
-var count = 0;
+var createNewLocationForm = document.getElementById('location-form');
+var addTimeToLocationForm = document.getElementById('add-time-form');
 
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
@@ -19,14 +19,17 @@ StoreLocation.prototype.pushHourlyData = function(data) {
 StoreLocation.prototype.getRow = function() {
   var figureEl = document.getElementById('all-location-data');
   var tableEl = document.createElement('table');
-  if (figureEl && count === 0){
+  // Prevents heading from being created every time user submits information
+  if (figureEl){
     var headingEl = document.createElement('h2');
     headingEl.textContent = this.name;
     figureEl.appendChild(headingEl);
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
   };
+  // If the HTML page is correct page to run on:
   if (figureEl) {
+    // Create array representing table row
     for (var i = 0; i < this.hourlyData.length; i++) {
       currentRowArray = [];
       var time = this.hourlyData[i].time;
@@ -35,12 +38,9 @@ StoreLocation.prototype.getRow = function() {
       var driversNeeded = this.hourlyData[i].driversNeeded;
       currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
       tableEl.appendChild(generateRow(currentRowArray));
-    }
-    if (count === 0) {
-      console.log('Count is 0');
       figureEl.appendChild(tableEl);
-    } else {
       console.log('Count is not 0, row should be added.');
+      // createNewLocation.addEventListener('submit', userInputStore);
       tableEl.appendChild(generateRow(currentRowArray));
     }
   }
@@ -56,24 +56,43 @@ StoreLocation.prototype.calculatePizzasServed = function() {
 };
 
 // Captures user inputs, creates new store location object, adds inputs to hourly data object, creates table row with the inputs by accessing the hourly data object.
-function userInputStore(event) {
+function userInputCreateStore(event) {
   event.preventDefault();
-  var tableEl = document.getElementById('locationName');
+
   //Collects data from form and stores in variables.
+  var userTableSection = document.getElementById('all-location-data');
   var userLocationName = event.target.locationName.value;
-  var userLocationObject = new StoreLocation(userLocationName);
-  console.log('Location object: ', userLocationObject);
+
+  var headingEl = document.createElement('h2');
+  headingEl.textContent = userLocationName;
+  userTableSection.appendChild(headingEl);
+
+  var tableEl = document.createElement('table');
+  tableEl.setAttribute('id', userLocationName);
+
+  var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
+  tableEl.appendChild(firstRow);
+  userTableSection.appendChild(tableEl);
+};
+
+function userInputAddHourData(event){
+  event.preventDefault();
+  var userLocationName = event.target.locationName.value;
+  var tableEl = document.getElementById(userLocationName);
+
   var userTime = event.target.time.value;
   var userMinPizzas = parseInt(event.target.minPizzas.value);
   var userMaxPizzas = parseInt(event.target.maxPizzas.value);
   var userMinDeliveries = parseInt(event.target.minDeliveries.value);
   var userMaxDeliveries = parseInt(event.target.maxDeliveries.value);
+
+  var hour = new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries);
   //Adds data to hourlyData property of store object.
-  userLocationObject.pushHourlyData(new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries));
+  tableEl.appendChild(generateRow([hour.time, hour.pizzasSold, hour.deliveriesMade, hour.driversNeeded]));
+
   console.log('Hourly Data: ', userLocationObject.hourlyData);
-  userLocationObject.getRow();
-  count++;
-};
+  // userLocationObject.getRow();
+}
 
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
@@ -253,4 +272,5 @@ georgetown.getRow();
 ravenna.getRow();
 
 totalPizzasSoldAcrossAllLocations();
-createNewLocation.addEventListener('submit', userInputStore);
+createNewLocationForm.addEventListener('submit', userInputCreateStore);
+addTimeToLocationForm.addEventListener('submit', userInputAddHourData);
