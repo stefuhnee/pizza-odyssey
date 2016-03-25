@@ -6,6 +6,7 @@ td, table, tr, th {
   border: 1px solid black;
   padding: 3px;
   background-color: #fff;
+  font-family: Verdana;
 }
 
 table {
@@ -46,17 +47,18 @@ fieldset {
 }
 
 h2 {
-  font-family: Verdana;
+  font-family: 'Verdana';
   text-transform: capitalize;
-  color: #B24D2E;
+  color: #fff;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
-  width: 350px;
+  background-color: #B5E5FF;
+  width: 300px;
   text-align: center;
   border-radius: 10px;
   border: 1px solid black;
   padding: 3px;
+  text-shadow: 0 1px 1px #000000
 }
 
 nav {
@@ -66,9 +68,9 @@ nav {
 }
 
 li {
-  background-color: #fff;
+  background-color: #21B28C;
   padding: 2px;
-  border: 3px dotted #B24D2E;;
+  border: 2px dotted black;
   border-radius: 10px;
 }
 
@@ -77,23 +79,26 @@ ul {
   list-style-type: none;
   display: inline-block;
   margin-right: 0;
-  right: 55px;
-  top: -9px;
-  font-size: 25px;
+  right: 175px;
+  top: 55px;
+  font-size: 20px;
 }
 
 h1 {
   font-size: 40px;
   text-align: center;
-  font-family: Verdana;
+  font-family: 'Waiting for the Sunrise';
+  font-weight: bold;
   margin-left: auto;
   margin-right: auto;
-  background-color: #fff;
+  background-color: #B5E5FF;
+  color: #fff;
   width: 700px;
   text-align: center;
   border-radius: 10px;
-  border: 1px solid black;
-  padding: 3px;
+  border: 2px solid black;
+  padding: 1px;
+  text-shadow: 0 1px 1px #000000
 }
 
 th {
@@ -104,8 +109,10 @@ th {
 
 a {
   text-decoration: none;
+  font-family: Verdana;
+  color: #FFEB7C;
 }
 
 a:hover {
-  color: #21B28C;
+  color: #ffffff;
 }
