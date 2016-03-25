@@ -1,5 +1,3 @@
-// idea: ask for 3 hours of time at a time.... push to array.
-
 var pizzasServed = document.getElementById('pizzas-served');
 var createNewLocationForm = document.getElementById('location-form');
 var addTimeToLocationForm = document.getElementById('add-time-form');
@@ -15,11 +13,11 @@ StoreLocation.prototype.pushHourlyData = function(data) {
   this.hourlyData.push(data);
 };
 
-// Create a table for the StoreLocation object, create and add the table heading row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
+// Create a table for the StoreLocation object.
 StoreLocation.prototype.getRow = function() {
   var figureEl = document.getElementById('all-location-data');
   var tableEl = document.createElement('table');
-  // Prevents heading from being created every time user submits information
+  // Checks if the HTML page is the correct page to run the function on (contains figure with id property all-location-data) so error is not thrown. Creates and appends header with location name, and creates and appends table heading.
   if (figureEl){
     var headingEl = document.createElement('h2');
     headingEl.textContent = this.name;
@@ -27,9 +25,8 @@ StoreLocation.prototype.getRow = function() {
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
   };
-  // If the HTML page is correct page to run on:
   if (figureEl) {
-    // Create array representing table row
+    // Create array representing table row. Access each hourlyData array from the location object, and then access the properties of each hourlyData object within the array. Push to an array to represent the row of the table, then append the elements of the array to the table as a row.
     for (var i = 0; i < this.hourlyData.length; i++) {
       currentRowArray = [];
       var time = this.hourlyData[i].time;
@@ -39,9 +36,6 @@ StoreLocation.prototype.getRow = function() {
       currentRowArray.push(time, pizzasSold, deliveriesMade, driversNeeded);
       tableEl.appendChild(generateRow(currentRowArray));
       figureEl.appendChild(tableEl);
-      console.log('Count is not 0, row should be added.');
-      // createNewLocation.addEventListener('submit', userInputStore);
-      tableEl.appendChild(generateRow(currentRowArray));
     }
   }
 };
@@ -55,26 +49,25 @@ StoreLocation.prototype.calculatePizzasServed = function() {
   return totalPizzasSold;
 };
 
-// Captures user inputs, creates new store location object, adds inputs to hourly data object, creates table row with the inputs by accessing the hourly data object.
+// Captures user inputs and creates table row with the inputs.
 function userInputCreateStore(event) {
   event.preventDefault();
-
-  //Collects data from form and stores in variables.
+  // Targets section containing tables and captures location name from first form to create header with store name and user generated table and append to the section.
   var userTableSection = document.getElementById('all-location-data');
   var userLocationName = event.target.locationName.value;
-
   var headingEl = document.createElement('h2');
   headingEl.textContent = userLocationName;
   userTableSection.appendChild(headingEl);
-
+  // Gives table the id property of the name entered.
   var tableEl = document.createElement('table');
   tableEl.setAttribute('id', userLocationName);
-
+  // Adds heading row to table and appends it to the table, then appends table to the HTML section with the id all-location-data.
   var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
   tableEl.appendChild(firstRow);
   userTableSection.appendChild(tableEl);
 };
 
+// Captures data from second form, including name of location (needs to match value used to create table).
 function userInputAddHourData(event){
   event.preventDefault();
   var userLocationName = event.target.locationName.value;
@@ -85,14 +78,11 @@ function userInputAddHourData(event){
   var userMaxPizzas = parseInt(event.target.maxPizzas.value);
   var userMinDeliveries = parseInt(event.target.minDeliveries.value);
   var userMaxDeliveries = parseInt(event.target.maxDeliveries.value);
-
-  var hour = new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries);
-  //Adds data to hourlyData property of store object.
-  tableEl.appendChild(generateRow([hour.time, hour.pizzasSold, hour.deliveriesMade, hour.driversNeeded]));
-
-  console.log('Hourly Data: ', userLocationObject.hourlyData);
-  // userLocationObject.getRow();
-}
+  // Instantiates new HourlyData object using captured data.
+  var userHour = new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries);
+  //Invokes generateRow function to add the data stored within the object as an array to the table to generate a new row.
+  tableEl.appendChild(generateRow([userHour.time, userHour.pizzasSold, userHour.deliveriesMade, userHour.driversNeeded]));
+};
 
 // Adds total pizzas sold across all stores
 function totalPizzasSoldAcrossAllLocations() {
@@ -108,7 +98,7 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-// Creates a heading row for the table
+// Creates a heading row for non-user-generated tables.
 function generateHeadingRow(tableHeadings) {
   var row = document.createElement('tr');
   var col;
@@ -120,7 +110,7 @@ function generateHeadingRow(tableHeadings) {
   return row;
 };
 
-// Creates a data row for the table
+// Creates a data row for a table
 function generateRow(currentRowArray) {
   var row = document.createElement('tr');
   var col;
