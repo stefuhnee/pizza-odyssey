@@ -68,6 +68,8 @@ nav {
 li {
   background-color: #fff;
   padding: 2px;
+  border: 3px dotted salmon;
+  border-radius: 10px;
 }
 
 ul {
@@ -97,4 +99,12 @@ th {
   background-color: #21B28C;
   font-family: Verdana;
   color: #FFF5F2;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #21B28C;
 }
