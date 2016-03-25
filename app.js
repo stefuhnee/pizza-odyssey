@@ -1,6 +1,5 @@
 var pizzasServed = document.getElementById('pizzas-served');
-var createNewLocationForm = document.getElementById('location-form');
-var addTimeToLocationForm = document.getElementById('add-time-form');
+var addTimeToLocationForm = document.getElementById('location-form');
 
 // Creates a new object of the type StoreLocation with a name and an empty array.
 function StoreLocation(name) {
@@ -50,8 +49,7 @@ StoreLocation.prototype.calculatePizzasServed = function() {
 };
 
 // Captures user inputs and creates table row with the inputs.
-function userInputCreateStore(event) {
-  event.preventDefault();
+function userInputCreateStore() {
   // Targets section containing tables and captures location name from first form to create header with store name and user generated table and append to the section.
   var userTableSection = document.getElementById('all-location-data');
   var userLocationName = (event.target.locationName.value);
@@ -68,8 +66,7 @@ function userInputCreateStore(event) {
 };
 
 // Captures data from second form, including name of location (needs to match value used to create table).
-function userInputAddHourData(event){
-  event.preventDefault();
+function userInputAddHourData(){
   var userLocationName = (event.target.locationName.value);
   var tableEl = document.getElementById(userLocationName.split(' ').join('-'));
   var userTime = event.target.time.value;
@@ -123,6 +120,17 @@ function generateRow(currentRowArray) {
   }
   return row;
 };
+
+// Checks if the user has created a table with the id identified with the name inputted. If they have, add data. If they haven't, make a new table!
+function addUserInput(event) {
+  event.preventDefault();
+  var userLocationName = (event.target.locationName.value);
+  if (document.getElementById(userLocationName)) {
+    userInputAddHourData();
+  } else {
+    userInputCreateStore();
+  }
+}
 
 // Creates new object HourlyData with 4 properties. Eventually becomes a property of the StoreLocation object.
 function HourlyData(time, minPizzasSold, maxPizzasSold, minDeliveriesMade, maxDeliveriesMade) {
@@ -264,5 +272,4 @@ georgetown.getRow();
 ravenna.getRow();
 
 totalPizzasSoldAcrossAllLocations();
-createNewLocationForm.addEventListener('submit', userInputCreateStore);
-addTimeToLocationForm.addEventListener('submit', userInputAddHourData);
+addTimeToLocationForm.addEventListener('submit', addUserInput);
