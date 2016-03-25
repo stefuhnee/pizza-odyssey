@@ -68,7 +68,7 @@ nav {
 li {
   background-color: #fff;
   padding: 2px;
-  border: 3px dotted salmon;
+  border: 3px dotted #B24D2E;;
   border-radius: 10px;
 }
 
@@ -78,6 +78,7 @@ ul {
   display: inline-block;
   margin-right: 0;
   right: 55px;
+  top: -9px;
   font-size: 25px;
 }
 
