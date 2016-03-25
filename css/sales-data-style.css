@@ -27,8 +27,8 @@ input[type=text] {
 
 input, button {
   font-family: Verdana;
-  color: #B24D2E;
-  background-color: #FFF5F2;
+  color: #000000;
+  background-color: #B5E5FF;
 }
 
 legend {
@@ -44,6 +44,7 @@ legend {
 
 fieldset {
   background-color: #fff;
+  border-radius: 10px;
 }
 
 h2 {
