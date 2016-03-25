@@ -20,7 +20,7 @@ StoreLocation.prototype.getRow = function() {
   // Checks if the HTML page is the correct page to run the function on (contains figure with id property all-location-data) so error is not thrown. Creates and appends header with location name, and creates and appends table heading.
   if (figureEl){
     var headingEl = document.createElement('h2');
-    headingEl.textContent = this.name;
+    headingEl.textContent = this.name.split('-').join(' ');
     figureEl.appendChild(headingEl);
     var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
     tableEl.appendChild(firstRow);
@@ -54,13 +54,13 @@ function userInputCreateStore(event) {
   event.preventDefault();
   // Targets section containing tables and captures location name from first form to create header with store name and user generated table and append to the section.
   var userTableSection = document.getElementById('all-location-data');
-  var userLocationName = (event.target.locationName.value).split(' ').join('-');
+  var userLocationName = (event.target.locationName.value);
   var headingEl = document.createElement('h2');
   headingEl.textContent = userLocationName;
   userTableSection.appendChild(headingEl);
   // Gives table the id property of the name entered.
   var tableEl = document.createElement('table');
-  tableEl.setAttribute('id', userLocationName);
+  tableEl.setAttribute('id', userLocationName.split(' ').join('-'));
   // Adds heading row to table and appends it to the table, then appends table to the HTML section with the id all-location-data.
   var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
   tableEl.appendChild(firstRow);
@@ -70,18 +70,20 @@ function userInputCreateStore(event) {
 // Captures data from second form, including name of location (needs to match value used to create table).
 function userInputAddHourData(event){
   event.preventDefault();
-  var userLocationName = (event.target.locationName.value).split(' ').join('-');
-  var tableEl = document.getElementById(userLocationName);
-
+  var userLocationName = (event.target.locationName.value);
+  var tableEl = document.getElementById(userLocationName.split(' ').join('-'));
   var userTime = event.target.time.value;
   var userMinPizzas = parseInt(event.target.minPizzas.value);
   var userMaxPizzas = parseInt(event.target.maxPizzas.value);
   var userMinDeliveries = parseInt(event.target.minDeliveries.value);
   var userMaxDeliveries = parseInt(event.target.maxDeliveries.value);
-  // Instantiates new HourlyData object using captured data.
-  var userHour = new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries);
-  //Invokes generateRow function to add the data stored within the object as an array to the table to generate a new row.
-  tableEl.appendChild(generateRow([userHour.time, userHour.pizzasSold, userHour.deliveriesMade, userHour.driversNeeded]));
+
+  if ((!isNaN(userMinPizzas) && !isNaN(userMaxPizzas) && !isNaN(userMinDeliveries) && !isNaN(userMaxDeliveries))) {
+    // Instantiates new HourlyData object using captured data.
+    var userHour = new HourlyData(userTime, userMinPizzas, userMaxPizzas, userMinDeliveries, userMaxDeliveries);
+    //Invokes generateRow function to add the data stored within the object as an array to the table to generate a new row.
+    tableEl.appendChild(generateRow([userHour.time, userHour.pizzasSold, userHour.deliveriesMade, userHour.driversNeeded]));
+  }
 };
 
 // Adds total pizzas sold across all stores
