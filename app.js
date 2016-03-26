@@ -121,10 +121,10 @@ function generateRow(currentRowArray) {
   return row;
 };
 
-// Checks if the user has created a table with the id identified with the name inputted. If they have, add data. If they haven't, make a new table!
+// Checks if the user has created a table with the id identified with the name inputted. If they have, add data. If they haven't, make a new table! Accounts for spaces in inputted location.
 function addUserInput(event) {
   event.preventDefault();
-  var userLocationName = (event.target.locationName.value);
+  var userLocationName = (event.target.locationName.value.split(' ').join('-'));
   if (document.getElementById(userLocationName)) {
     userInputAddHourData();
   } else {

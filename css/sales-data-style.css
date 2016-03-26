@@ -6,7 +6,7 @@ td, table, tr, th {
   border: 1px solid black;
   padding: 3px;
   background-color: #fff;
-  font-family: Verdana;
+  font-family: Arial;
 }
 
 table {
@@ -18,7 +18,7 @@ table {
 }
 
 label {
-  font-family: Verdana;
+  font-family: Arial;
 }
 
 input[type=text] {
@@ -26,13 +26,13 @@ input[type=text] {
 }
 
 input, button {
-  font-family: Verdana;
+  font-family: Arial;
   color: #000000;
   background-color: #B5E5FF;
 }
 
 legend {
-  font-family: Verdana;
+  font-family: Arial;
   font-size: 18px;
   font-weight: bold;
   color: #21B28C;
@@ -48,7 +48,7 @@ fieldset {
 }
 
 h2 {
-  font-family: 'Verdana';
+  font-family: 'Arial';
   text-transform: capitalize;
   color: #fff;
   margin-left: auto;
@@ -105,13 +105,13 @@ h1 {
 
 th {
   background-color: #21B28C;
-  font-family: Verdana;
+  font-family: Arial;
   color: #FFF5F2;
 }
 
 a {
   text-decoration: none;
-  font-family: Verdana;
+  font-family: Arial;
   color: #3D7FE8;
 }
 
@@ -119,8 +119,7 @@ a:hover {
   color: #21B28C;
 }
 
-
-
+/* I was challenged to add a marquee by Peter. Challenge accepted. */
 
 .marquee {
  height: 50px;
@@ -144,9 +143,9 @@ font-size: 40px;
  -webkit-transform:translateX(100%);
  transform:translateX(100%);
  /* Apply animation to this element */
- -moz-animation: scroll-left 8s linear infinite;
- -webkit-animation: scroll-left 8s linear infinite;
- animation: scroll-left 8s linear infinite;
+ -moz-animation: scroll-left 12s linear infinite;
+ -webkit-animation: scroll-left 12s linear infinite;
+ animation: scroll-left 12s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {
