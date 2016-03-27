@@ -3,7 +3,6 @@ body {
   width: 960px;
   text-align: center;
   background-color: #fff;
-  display: absolute;
 }
 
 h1 {
@@ -35,25 +34,7 @@ address {
   font-size: 15px;
   border: 1px solid black;
   margin-bottom: 2px;
-}
-
-
-.hours-info, address {
-  font-family: 'Ubuntu';
-  color: #fff;
-  display: inline-block;
-  margin-left: 15px;
-  margin-right: 15px;
-  border-radius: 10px;
-  background-color: #9498bf;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 359px;
-  font-style: normal;
-}
-
-.hours-info {
-    font-size: 20px;
+  display: block;
 }
 
 .address-headings {
@@ -90,6 +71,7 @@ address {
   justify-content: center;
   align-content: flex-start;
   align-items: stretch;
+  width: 960px;
 }
 
 .flex-items-default {
@@ -114,12 +96,6 @@ address {
     flex-basis: 960px;
 }
 
-.content {
-  flex-grow: 1px;
-  flex-shrink: 0;
-  flex-basis: 960px;
-}
-
 .flex-content-container {
   background-color: #404464;
   display:flex;
@@ -132,25 +108,18 @@ address {
   height: 1835px;
 }
 
+.content {
+  flex-grow: 1px;
+  flex-shrink: 0;
+  flex-basis: 960px;
+}
+
 .locations {
   width: 300px;
   height: 400px;
   flex-grow: 3;
   flex-shrink: 0;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-.right-content-container {
-  display:flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  width: 300px;
-  height: 1835px;
-  flex-grow: 1;
-  flex-shrink: 0;
+  padding-left: 8px;
 }
 
 .ballard, .first-hill, .international-district, .south-lake-union, .georgetown, .ravenna {
@@ -159,4 +128,51 @@ address {
   background-color: #9498bf;
   border-radius: 10px;
   margin-bottom: 8px;
+}
+
+.right-content-container {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: center;
+  width: 300px;
+  height: 1835px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.hours, .contact {
+  height: 250px;
+  width: 395px;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.hours {
+  flex-basis: 150px;
+}
+
+.contact-info {
+  width: 362px;
+}
+
+.hours-info, address {
+  font-family: 'Ubuntu';
+  color: #fff;
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 15px;
+  border-radius: 10px;
+  background-color: #9498bf;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 8px;
+  width: 362px;
+  font-style: normal;
+}
+
+.hours-info {
+    font-size: 20px;
 }
