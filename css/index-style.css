@@ -2,71 +2,132 @@ body {
   width: 960px;
   margin: 0 auto;
   text-align: center;
+  background-color: #fff;
+  display: absolute;
+}
+
+header {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 960px;
+  height: 342px;
+}
+
+main {
+  background-color: #404464;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 960px;
+  height: 800px;
+  border: solid 10px black;
+  border-top: 0;
+}
+
+h1 {
+  color: #ffffff;
+  text-shadow: 0 1px 1px #000000
+  font-size: 20px;
+  font-family: 'Ubuntu';
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h2 {
   display: inline;
-  position: relative;
-  z-index: 50;
   font-family: 'Waiting for the Sunrise';
-  margin-right: 5px;
   color: #fff;
 }
 
-header {
-  position: relative;
-  width: 100%;
-}
-
-main {
-  background-color: #6abaaa;
-  position: absolute;
-  border-radius: 10px;
-  padding: 5px;
-  width: 960px;
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .pizza-cat {
-  height: 283px;
-  width: 300px;
-  margin-right: auto;
-  margin-left: auto;
+  height: 300px;
+  width: 960px;
+  margin: auto;
 }
 
 .pizzas-line {
-    background-color: #01a29a;
+    background-color: #404464;
     text-align: right;
+    width: 960px;
+    border: 1px solid black;
+    position: relative;
 }
 
 .title {
   font-size: 100px;
+  display: inline;
+  position: relative;
   font-family: 'Waiting for the Sunrise';
-  position: absolute;
-  right: 0;
-  bottom: -47px;
-  color: #f25749;
+  width: 960px;
+  margin: auto;
+  color: #9D61B3;
   z-index: 5;
-  text-shadow: 0 1px 1px #000000
+  text-shadow: 2px 2px 2px #ffffff;
+  top: 93px;
 }
 
 .hours {
-  font-size: 20px;
   padding-left: 2px;
-  color: #f1e4ba;
-  font-family: 'Ubuntu';
   float: right;
   width: 350px;
 }
 
-.hours-title {
-  color: #ffffff;
-  text-shadow: 0 1px 1px #000000
-}
-
 .locations {
+  position: relative;
   width: 600px;
   float: left;
-  height: 500px;
+  height: 800px;
+  display: flex;
+  flex-direction: row;
+}
+
+.locations-title {
+  width: 100%;
+  align-self: stretch;
+  margin-right: auto;
+  margin-left: auto;
+  clear: both;
+  display: block;
+  justify-content: stretch;
+}
+
+.ballard {
+  width: 100%;
+  background-color: #ACB6FF;
+}
+
+.first-hill {
+  width: 100%;
+  background-color: #ACB6FF;
+}
+
+.international-district {
+  width: 100%;
+  background-color: #ACB6FF;
+}
+
+.south-lake-union {
+  width: 100%;
+  background-color: #ACB6FF;
+}
+
+.georgetown {
+  width: 100%;
+  background-color: #ACB6FF;
+}
+
+.ravenna {
+  width: 100%;
+  background-color: #ACB6FF;
 }
 
 .contact {
@@ -76,6 +137,7 @@ main {
 
 .hours-info {
   font-size: 20px;
+  font-family: 'Ubuntu';
 }
 
 .pizzas {
