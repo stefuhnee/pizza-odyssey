@@ -1,70 +1,48 @@
 body {
+  margin: auto;
   width: 960px;
-  margin: 0 auto;
   text-align: center;
   background-color: #fff;
   display: absolute;
 }
 
-header {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 960px;
-  height: 342px;
-}
-
-main {
-  background-color: #404464;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  width: 960px;
-  height: 800px;
-  border: solid 10px black;
-  border-top: 0;
-}
-
 h1 {
-  color: #ffffff;
-  text-shadow: 0 1px 1px #000000
-  font-size: 20px;
   font-family: 'Ubuntu';
-  margin-left: auto;
-  margin-right: auto;
+  font-size: 25px;
+  color: #9498bf;
+  text-shadow: 0 1px 1px #ffffff;
 }
 
 h2 {
-  display: inline;
+  font-family: 'Ubuntu';
+  font-size: 25px;
+}
+
+span {
+  font-family: 'Ubuntu';
+  font-size: 20px;
+  color: #fff;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 10px;
+  background-color: #9498bf;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#pizzas-served, .pizzas-served-text {
   font-family: 'Waiting for the Sunrise';
   color: #fff;
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.pizza-cat {
-  height: 300px;
-  width: 960px;
+  position: relative;
   margin: auto;
-}
-
-.pizzas-line {
-    background-color: #404464;
-    text-align: right;
-    width: 960px;
-    border: 1px solid black;
-    position: relative;
+  z-index: 4;
+  display: inline;
+  bottom: 160px;
 }
 
 .title {
   font-size: 100px;
-  display: inline;
   position: relative;
   font-family: 'Waiting for the Sunrise';
   width: 960px;
@@ -72,80 +50,93 @@ h2 {
   color: #9D61B3;
   z-index: 5;
   text-shadow: 2px 2px 2px #ffffff;
-  top: 93px;
+  bottom: 115px;
 }
 
-.hours {
-  padding-left: 2px;
-  float: right;
-  width: 350px;
+.flex-container {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: stretch;
+}
+
+.flex-items-default {
+  width: 300px;
+  height: 250px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+  flex-wrap: wrap;
+}
+
+.pizza-cat {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 960px;
+  height: 300px;
+}
+
+.pizzas-line {
+    background-color: #404464;
+    height: 46px;
+    border: 1px solid black;
+    flex-grow: 1px;
+    flex-shrink: 0;
+    flex-basis: 960px;
+}
+
+.content {
+  height: 400px;
+  border-top: 0;
+  flex-grow: 1px;
+  flex-shrink: 0;
+  flex-basis: 960px;
+}
+
+.flex-content-container {
+  background-color: #404464;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: stretch;
+  width: 960px;
+  height: 400px;
+  border: 1px solid black;
+  border-top: 0;
 }
 
 .locations {
-  position: relative;
-  width: 600px;
-  float: left;
-  height: 800px;
-  display: flex;
-  flex-direction: row;
+  width: 300px;
+  height: 400px;
+  flex-grow: 3;
+  flex-shrink: 0;
 }
 
-.locations-title {
+.right-content-container {
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: stretch;
+  width: 300px;
+  height: 250px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  border-left: 1px solid black;
+}
+
+.hours, .contact {
   width: 100%;
-  align-self: stretch;
-  margin-right: auto;
-  margin-left: auto;
-  clear: both;
-  display: block;
-  justify-content: stretch;
 }
 
-.ballard {
+.ballard, .first-hill, .international-district, .south-lake-union, .georgetown, .ravenna {
+  padding-top: 10px;
   width: 100%;
-  background-color: #ACB6FF;
-}
-
-.first-hill {
-  width: 100%;
-  background-color: #ACB6FF;
-}
-
-.international-district {
-  width: 100%;
-  background-color: #ACB6FF;
-}
-
-.south-lake-union {
-  width: 100%;
-  background-color: #ACB6FF;
-}
-
-.georgetown {
-  width: 100%;
-  background-color: #ACB6FF;
-}
-
-.ravenna {
-  width: 100%;
-  background-color: #ACB6FF;
-}
-
-.contact {
-  width: 350px;
-  float: right;
-}
-
-.hours-info {
-  font-size: 20px;
-  font-family: 'Ubuntu';
-}
-
-.pizzas {
-  font-size: 20px;
-  padding-left: 2px;
-  color: #f1e4ba;
-  font-family: 'Ubuntu';
-  position: relative;
-  top: 15px;
-  text-align: center;
+  background-color: #9498bf;
+  border-radius: 10px;
 }
