@@ -11,16 +11,35 @@ h1 {
   font-size: 25px;
   color: #9498bf;
   text-shadow: 0 1px 1px #ffffff;
+  text-transform: uppercase;
 }
 
 h2 {
   font-family: 'Ubuntu';
   font-size: 25px;
+  color: #fff;
+  height: 8px;
+  text-transform: uppercase;
 }
 
-span {
+a {
+  text-decoration: none;
+  color: #9D61B3;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+address {
+  font-size: 15px;
+  border: 1px solid black;
+  margin-bottom: 2px;
+}
+
+
+.hours-info, address {
   font-family: 'Ubuntu';
-  font-size: 20px;
   color: #fff;
   display: inline-block;
   margin-left: 15px;
@@ -29,6 +48,16 @@ span {
   background-color: #9498bf;
   padding-top: 10px;
   padding-bottom: 10px;
+  width: 359px;
+  font-style: normal;
+}
+
+.hours-info {
+    font-size: 20px;
+}
+
+.address-headings {
+  color: #000000
 }
 
 #pizzas-served, .pizzas-served-text {
@@ -39,6 +68,7 @@ span {
   z-index: 4;
   display: inline;
   bottom: 160px;
+  text-transform: none;
 }
 
 .title {
@@ -49,7 +79,7 @@ span {
   margin: auto;
   color: #9D61B3;
   z-index: 5;
-  text-shadow: 2px 2px 2px #ffffff;
+  text-shadow: 5px 5px 5px #000000;
   bottom: 115px;
 }
 
@@ -63,8 +93,6 @@ span {
 }
 
 .flex-items-default {
-  width: 300px;
-  height: 250px;
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: 0;
@@ -79,17 +107,14 @@ span {
 }
 
 .pizzas-line {
-    background-color: #404464;
+    background-color: #14183b;
     height: 46px;
-    border: 1px solid black;
     flex-grow: 1px;
     flex-shrink: 0;
     flex-basis: 960px;
 }
 
 .content {
-  height: 400px;
-  border-top: 0;
   flex-grow: 1px;
   flex-shrink: 0;
   flex-basis: 960px;
@@ -104,9 +129,7 @@ span {
   align-content: flex-start;
   align-items: stretch;
   width: 960px;
-  height: 400px;
-  border: 1px solid black;
-  border-top: 0;
+  height: 1835px;
 }
 
 .locations {
@@ -114,6 +137,8 @@ span {
   height: 400px;
   flex-grow: 3;
   flex-shrink: 0;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .right-content-container {
@@ -121,22 +146,17 @@ span {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-content: flex-start;
-  align-items: stretch;
+  align-items: center;
   width: 300px;
-  height: 250px;
+  height: 1835px;
   flex-grow: 1;
   flex-shrink: 0;
-  border-left: 1px solid black;
-}
-
-.hours, .contact {
-  width: 100%;
 }
 
 .ballard, .first-hill, .international-district, .south-lake-union, .georgetown, .ravenna {
   padding-top: 10px;
-  width: 100%;
+  width: 560px;
   background-color: #9498bf;
   border-radius: 10px;
+  margin-bottom: 8px;
 }
