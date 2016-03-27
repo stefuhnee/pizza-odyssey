@@ -63,6 +63,7 @@ function userInputCreateStore() {
   var firstRow = generateHeadingRow(['Time', 'Pizzas Sold', 'Deliveries Made', 'Drivers Needed']);
   tableEl.appendChild(firstRow);
   userTableSection.appendChild(tableEl);
+  userInputAddHourData();
 };
 
 // Captures data from second form, including name of location (needs to match value used to create table).
