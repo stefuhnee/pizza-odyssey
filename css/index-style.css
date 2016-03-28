@@ -11,6 +11,7 @@ h1 {
   color: #9498bf;
   text-shadow: 0 1px 1px #000;
   text-transform: uppercase;
+  display: block;
 }
 
 h2 {
@@ -36,6 +37,8 @@ address {
   border: 1px solid black;
   margin-bottom: 2px;
   display: block;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .address-headings {
@@ -99,7 +102,7 @@ address {
   align-content: flex-start;
   align-items: stretch;
   width: 960px;
-  height: 1835px;
+  height: 1850px;
 }
 
 .content {
@@ -118,10 +121,10 @@ address {
 
 .ballard, .first-hill, .international-district, .south-lake-union, .georgetown, .ravenna {
   padding-top: 10px;
-  width: 560px;
   background-color: #a8acce;
   border-radius: 10px;
   margin-bottom: 8px;
+  padding-bottom: 8px;
 }
 
 .right-content-container {
@@ -132,16 +135,17 @@ address {
   align-content: stretch;
   align-items: center;
   width: 300px;
-  height: 1835px;
   flex-grow: 1;
   flex-shrink: 0;
+  padding-left: 14px;
 }
 
-.hours, .contact {
+.hours, .contact, .menu {
   height: 250px;
-  width: 395px;
+  width: 375px;
   align-self: flex-start;
   flex-shrink: 0;
+  margin-bottom: 5px;
 }
 
 .hours {
@@ -149,26 +153,34 @@ address {
 }
 
 .contact-info {
-  width: 362px;
+  width: 375px;
   background-color: #a8acce;
+}
+
+.menu-info {
+  align-self: flex-start;
+  background-color: #a8acce;
+  border-radius: 10px;
+  height: 300px;
+  font-family: 'Ubuntu';
+  color: #fff;
+
 }
 
 .hours-info, address {
   font-family: 'Ubuntu';
   color: #fff;
   display: inline-block;
-  margin-left: 8px;
-  margin-right: 15px;
   border-radius: 10px;
   background-color: #8f94bc;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 8px;
-  width: 362px;
+  width: 375px;
   font-style: normal;
 }
 
-.hours-info {
+.hours-info, .menu-info {
     font-size: 20px;
+    width: 375px;
     background-color: #a8acce;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
