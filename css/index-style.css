@@ -2,7 +2,9 @@ body {
   margin: auto;
   width: 960px;
   text-align: center;
-  background-color: #000;
+  background-image: url(http://wallpapercave.com/wp/boHuSO8.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
