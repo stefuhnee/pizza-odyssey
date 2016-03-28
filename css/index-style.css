@@ -2,14 +2,14 @@ body {
   margin: auto;
   width: 960px;
   text-align: center;
-  background-color: #fff;
+  background-color: #000;
 }
 
 h1 {
   font-family: 'Ubuntu';
   font-size: 25px;
   color: #9498bf;
-  text-shadow: 0 1px 1px #ffffff;
+  text-shadow: 0 1px 1px #000;
   text-transform: uppercase;
 }
 
@@ -19,6 +19,7 @@ h2 {
   color: #fff;
   height: 8px;
   text-transform: uppercase;
+  text-shadow: 0 1px 1px #000;
 }
 
 a {
@@ -74,13 +75,6 @@ address {
   width: 960px;
 }
 
-.flex-items-default {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 0;
-  flex-wrap: wrap;
-}
-
 .pizza-cat {
   flex-grow: 1;
   flex-shrink: 0;
@@ -125,7 +119,7 @@ address {
 .ballard, .first-hill, .international-district, .south-lake-union, .georgetown, .ravenna {
   padding-top: 10px;
   width: 560px;
-  background-color: #9498bf;
+  background-color: #a8acce;
   border-radius: 10px;
   margin-bottom: 8px;
 }
@@ -156,6 +150,7 @@ address {
 
 .contact-info {
   width: 362px;
+  background-color: #a8acce;
 }
 
 .hours-info, address {
@@ -165,7 +160,7 @@ address {
   margin-left: 8px;
   margin-right: 15px;
   border-radius: 10px;
-  background-color: #9498bf;
+  background-color: #8f94bc;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 8px;
@@ -175,4 +170,5 @@ address {
 
 .hours-info {
     font-size: 20px;
+    background-color: #a8acce;
 }
